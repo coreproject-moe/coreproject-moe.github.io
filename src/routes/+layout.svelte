@@ -3,7 +3,7 @@
     import { onMount } from 'svelte';
     import '../global.css'
     onMount(async () => {
-        defineCustomElements(globalThis.window);
+        defineCustomElements();
     });
 
 
