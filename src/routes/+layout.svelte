@@ -1,42 +1,47 @@
 <script lang="ts">
     import { defineCustomElements } from '@coreproject-moe/icons/loader';
     import { onMount } from 'svelte';
-    import '../global.css'
+    import '../global.css';
     onMount(async () => {
         defineCustomElements();
     });
-
-
 </script>
 
-
 <div class="relative flex h-dvh w-full flex-col bg-secondary">
-	<header
-		class="absolute top-0 z-10 flex h-[4.5rem] w-full flex-none items-center justify-between bg-secondary/95 px-4 backdrop-blur-3xl md:static md:h-[5vw] md:bg-secondary md:px-[1.75vw] md:py-[1vw]"
-	>
-		<a href="/">
-			<coreproject-shape-logo class="w-9 md:w-[2.25vw] md:pt-[0.75vw]"></coreproject-shape-logo>
-		</a>
-		<div class="relative flex items-center md:static">
-			<div class="absolute left-1/2 -translate-x-1/2">
-				<a href="/anime" class="hidden md:flex">
-					<coreproject-logo-animecore class="w-[10vw]"></coreproject-logo-animecore>
-				</a>
-				<div>
-					<form class="relative flex h-12 w-[65vw] items-center md:hidden">
-						<button class="btn absolute left-4 border-none !bg-transparent p-0" aria-label="Search">
-							<coreproject-shape-search class="w-5"></coreproject-shape-search>
-						</button>
-						<input
-							type="text"
-							placeholder="Search for animes, mangas..."
-							class="placeholder:text-surface-200 h-full w-full rounded-lg border-none bg-neutral pl-12 text-base font-semibold text-accent shadow-lg !ring-0 placeholder:font-medium"
-						/>
-					</form>
-				</div>
-			</div>
-		</div>
-		<!-- {#if auth_store.state}
+    <header
+        class="absolute top-0 z-10 flex h-[4.5rem] w-full flex-none items-center justify-between bg-secondary/95 px-4 backdrop-blur-3xl md:static md:h-[5vw] md:bg-secondary md:px-[1.75vw] md:py-[1vw]"
+    >
+        <a href="/">
+            <coreproject-shape-logo class="w-9 md:w-[2.25vw] md:pt-[0.75vw]"
+            ></coreproject-shape-logo>
+        </a>
+        <div class="relative flex items-center md:static">
+            <div class="absolute left-1/2 -translate-x-1/2">
+                <a href="/anime" class="hidden md:flex">
+                    <coreproject-logo-animecore class="w-[10vw]"
+                    ></coreproject-logo-animecore>
+                </a>
+                <div>
+                    <form
+                        class="relative flex h-12 w-[65vw] items-center md:hidden"
+                    >
+                        <button
+                            class="btn absolute left-4 border-none !bg-transparent p-0"
+                            aria-label="Search"
+                        >
+                            <coreproject-shape-search class="w-5"
+                            ></coreproject-shape-search>
+                        </button>
+                        <input
+                            type="text"
+                            placeholder="Search for animes, mangas..."
+                            class="placeholder:text-surface-200 h-full w-full rounded-lg border-none bg-neutral pl-12 text-base font-semibold text-accent shadow-lg !ring-0 placeholder:font-medium"
+                        />
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- {#if auth_store.state}
 			<div class="dropdown dropdown-end">
 				<div tabIndex={0} role="button" class="btn border-none !bg-transparent p-0">
 					<img
@@ -103,21 +108,21 @@
 				</div>
 			</div>
 		{/if} -->
-	</header>
-	<div class="flex flex-1 overflow-hidden">
-		<aside
-			class="hidden w-[6vw] flex-col justify-between overflow-y-auto overflow-x-hidden py-[2vw] md:flex"
-		>
-			<div>
-				<div class="flex flex-col items-center">
-					<button
-						class="btn btn-warning size-[3vw] min-h-full rounded-[0.75vw] p-0"
-		
-					>
-						<coreproject-shape-search class="w-[1.25vw] text-black"></coreproject-shape-search>
-					</button>
-				</div>
-<!-- 
+    </header>
+    <div class="flex flex-1 overflow-hidden">
+        <aside
+            class="hidden w-[6vw] flex-col justify-between overflow-y-auto overflow-x-hidden py-[2vw] md:flex"
+        >
+            <div>
+                <div class="flex flex-col items-center">
+                    <button
+                        class="btn btn-warning size-[3vw] min-h-full rounded-[0.75vw] p-0"
+                    >
+                        <coreproject-shape-search class="w-[1.25vw] text-black"
+                        ></coreproject-shape-search>
+                    </button>
+                </div>
+                <!-- 
 				<VercelHover
 					glider_container_class="mt-[2.8125vw] flex flex-col items-center gap-[0.75vw]"
 					active_element_class="rounded-[1vw] bg-white/10"
@@ -175,9 +180,9 @@
 						{/each}
 					{/snippet}
 				</VercelHover> -->
-			</div>
-			<div class="flex flex-col items-center">
-				<!-- {#each Object.entries(icon_mapping.bottom) as item}
+            </div>
+            <div class="flex flex-col items-center">
+                <!-- {#each Object.entries(icon_mapping.bottom) as item}
 					{@const item_icon = item[1].icon}
 					{@const item_name = item[0]}
 
@@ -192,74 +197,72 @@
 						</span>
 					</button>
 				{/each} -->
-			</div>
-		</aside>
-		<main class="relative w-full overflow-y-scroll">
-			<svg
-				class="absolute left-0 top-0 z-10 md:size-[2vw]"
-				viewBox="0 0 24 24"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<path
-					class="fill-secondary"
-					fill-rule="evenodd"
-					clip-rule="evenodd"
-					d="M24 0H0V24C0 10.7451 10.7452 0 24 0Z"
-				/>
-			</svg>
-			<div id="page" class="w-full overflow-y-scroll">
-				<slot />
-			</div>
-			<main></main>
-		</main>
-	</div>
+            </div>
+        </aside>
+        <main class="relative w-full overflow-y-scroll">
+            <svg
+                class="absolute left-0 top-0 z-10 md:size-[2vw]"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                    class="fill-secondary"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M24 0H0V24C0 10.7451 10.7452 0 24 0Z"
+                />
+            </svg>
+            <div id="page" class="w-full overflow-y-scroll">
+                <slot />
+            </div>
+            <main></main>
+        </main>
+    </div>
 </div>
-
-
 
 <!-- svelte-ignore css_unused_selector -->
 <style lang="scss" global>
-	@font-face {
-		font-family: "Kokoro";
-		src: url("../fonts/Kokoro/Kokoro-SemiBoldItalic.woff2") format("woff2");
-		font-weight: 600;
-		font-style: italic;
-		font-display: swap;
-	}
-	@font-face {
-		font-family: "Kokoro";
-		src: url("../fonts/Kokoro/Kokoro-SemiBold.woff2") format("woff2");
-		font-weight: 600;
-		font-style: normal;
-		font-display: swap;
-	}
-	@font-face {
-		font-family: "Kokoro";
-		src: url("../fonts/Kokoro/Kokoro-BoldItalic.woff2") format("woff2");
-		font-weight: bold;
-		font-style: italic;
-		font-display: swap;
-	}
-	@font-face {
-		font-family: "Kokoro";
-		src: url("../fonts/Kokoro/Kokoro-Italic.woff2") format("woff2");
-		font-weight: normal;
-		font-style: italic;
-		font-display: swap;
-	}
-	@font-face {
-		font-family: "Kokoro";
-		src: url("../fonts/Kokoro/Kokoro-Regular.woff2") format("woff2");
-		font-weight: normal;
-		font-style: normal;
-		font-display: swap;
-	}
-	@font-face {
-		font-family: "Kokoro";
-		src: url("../fonts/Kokoro/Kokoro-Bold.woff2") format("woff2");
-		font-weight: bold;
-		font-style: normal;
-		font-display: swap;
-	}
+    @font-face {
+        font-family: 'Kokoro';
+        src: url('../fonts/Kokoro/Kokoro-SemiBoldItalic.woff2') format('woff2');
+        font-weight: 600;
+        font-style: italic;
+        font-display: swap;
+    }
+    @font-face {
+        font-family: 'Kokoro';
+        src: url('../fonts/Kokoro/Kokoro-SemiBold.woff2') format('woff2');
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+    }
+    @font-face {
+        font-family: 'Kokoro';
+        src: url('../fonts/Kokoro/Kokoro-BoldItalic.woff2') format('woff2');
+        font-weight: bold;
+        font-style: italic;
+        font-display: swap;
+    }
+    @font-face {
+        font-family: 'Kokoro';
+        src: url('../fonts/Kokoro/Kokoro-Italic.woff2') format('woff2');
+        font-weight: normal;
+        font-style: italic;
+        font-display: swap;
+    }
+    @font-face {
+        font-family: 'Kokoro';
+        src: url('../fonts/Kokoro/Kokoro-Regular.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+    @font-face {
+        font-family: 'Kokoro';
+        src: url('../fonts/Kokoro/Kokoro-Bold.woff2') format('woff2');
+        font-weight: bold;
+        font-style: normal;
+        font-display: swap;
+    }
 </style>
