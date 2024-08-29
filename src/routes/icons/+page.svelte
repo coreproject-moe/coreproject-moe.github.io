@@ -1,5 +1,5 @@
 <script lang="ts">
-    // import icons_json from '$lib/icons.json';
+    import icons_json from '$lib/icons.json';
 
     function given_icon_name_return_html_string(
         icon_name: string,
@@ -14,7 +14,7 @@
 <div class="pt-[2vw] pl-[2vw]">
     <div class="flex items-center justify-center text-3xl">App icons</div>
     <div class="flex items-center justify-center w-full flex-col gap-10">
-        <!-- {#each icons_json as item}
+        {#each icons_json as item}
             {@const icon = item['icon-name']}
             {@const variants = item.variants}
             {#if variants}
@@ -28,6 +28,6 @@
                     {@html given_icon_name_return_html_string(icon)}
                 </div>
             {/if}
-        {/each} -->
+        {/each}
     </div>
 </div>
