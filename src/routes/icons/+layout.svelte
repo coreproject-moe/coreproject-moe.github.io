@@ -6,7 +6,7 @@
     <header
         class="top-0 z-10 flex h-[4.5rem] w-full flex-none items-center justify-between bg-secondary/95 px-4 backdrop-blur-3xl md:static md:h-[5vw] md:bg-secondary md:px-[1.75vw] md:py-[1vw]"
     >
-        <a href="{base}/">
+        <a href="{base}/icons">
             <coreproject-shape-logo class="w-9 md:w-[2.25vw] md:pt-[0.75vw]">
             </coreproject-shape-logo>
         </a>
