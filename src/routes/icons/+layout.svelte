@@ -4,11 +4,11 @@
 
 <div class="relative flex h-dvh w-full flex-col bg-secondary">
     <header
-        class="absolute top-0 z-10 flex h-[4.5rem] w-full flex-none items-center justify-between bg-secondary/95 px-4 backdrop-blur-3xl md:static md:h-[5vw] md:bg-secondary md:px-[1.75vw] md:py-[1vw]"
+        class="top-0 z-10 flex h-[4.5rem] w-full flex-none items-center justify-between bg-secondary/95 px-4 backdrop-blur-3xl md:static md:h-[5vw] md:bg-secondary md:px-[1.75vw] md:py-[1vw]"
     >
         <a href="{base}/">
-            <coreproject-shape-logo class="w-9 md:w-[2.25vw] md:pt-[0.75vw]"
-            ></coreproject-shape-logo>
+            <coreproject-shape-logo class="w-9 md:w-[2.25vw] md:pt-[0.75vw]">
+            </coreproject-shape-logo>
         </a>
         <div class="relative flex items-center md:static">
             <!-- <div class="absolute left-1/2 -translate-x-1/2">
@@ -109,14 +109,14 @@
             class="hidden w-[6vw] flex-col justify-between overflow-y-auto overflow-x-hidden py-[2vw] md:flex"
         >
             <div>
-                <div class="flex flex-col items-center">
+                <!-- <div class="flex flex-col items-center">
                     <button
                         class="btn btn-warning size-[3vw] min-h-full rounded-[0.75vw] p-0"
                     >
                         <coreproject-shape-search class="w-[1.25vw] text-black"
                         ></coreproject-shape-search>
                     </button>
-                </div>
+                </div> -->
                 <!-- 
 				<VercelHover
 					glider_container_class="mt-[2.8125vw] flex flex-col items-center gap-[0.75vw]"
@@ -196,7 +196,7 @@
         </aside>
         <main class="relative w-full overflow-y-scroll">
             <svg
-                class="absolute left-0 top-0 z-10 md:size-[2vw]"
+                class="hidden md:absolute left-0 top-0 z-10 md:size-[2vw]"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
