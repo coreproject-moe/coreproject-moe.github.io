@@ -3,7 +3,9 @@
     import '../global.css';
     import { defineCustomElements } from '@coreproject-moe/icons/loader';
 
-    defineCustomElements();
+    onMount(() => {
+        defineCustomElements(globalThis.window);
+    });
 </script>
 
 <div class="bg-secondary">
