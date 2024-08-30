@@ -1,13 +1,18 @@
 <script lang="ts">
     import icons_json from '$lib/icons.json';
 
-    function given_icon_name_return_html_string(
-        icon_name: string,
-        variant?: string
-    ) {
+    function given_icon_name_return_html_string({
+        icon_name,
+        classname,
+        variant,
+    }: {
+        icon_name: string;
+        classname?: string;
+        variant?: string;
+    }) {
         if (variant)
-            return `<${icon_name} variant='${variant}'></${icon_name}>`;
-        return `<${icon_name}></${icon_name}>`;
+            return `<${icon_name} ${classname ? `class=${classname}` : ''} variant='${variant}'></${icon_name}>`;
+        return `<${icon_name}${classname ? ` class=${classname}` : ''}></${icon_name}>`;
     }
 </script>
 
@@ -21,20 +26,32 @@
                 {#each variants as it}
                     <div class="flex flex-row items-center align-center gap-4">
                         <div class="size-10">
-                            {@html given_icon_name_return_html_string(icon, it)}
+                            {@html given_icon_name_return_html_string({
+                                icon_name: icon,
+                                classname: 'text-white',
+                                variant: it,
+                            })}
                         </div>
                         <code>
-                            {given_icon_name_return_html_string(icon, it)}
+                            {given_icon_name_return_html_string({
+                                icon_name: icon,
+                                variant: it,
+                            })}
                         </code>
                     </div>
                 {/each}
             {:else}
                 <div class="flex flex-row items-center align-center gap-4">
                     <div class="size-10">
-                        {@html given_icon_name_return_html_string(icon)}
+                        {@html given_icon_name_return_html_string({
+                            icon_name: icon,
+                            classname: `text-white`,
+                        })}
                     </div>
                     <code>
-                        {given_icon_name_return_html_string(icon)}
+                        {given_icon_name_return_html_string({
+                            icon_name: icon,
+                        })}
                     </code>
                 </div>
             {/if}
