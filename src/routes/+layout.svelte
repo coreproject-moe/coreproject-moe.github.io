@@ -2,7 +2,6 @@
 	import { onMount } from "svelte";
 	import "../global.css";
 	import { defineCustomElements } from "@coreproject-moe/icons/loader";
-	import "highlight.js/scss/github-dark.scss";
 
 	onMount(() => {
 		defineCustomElements(globalThis.window);
