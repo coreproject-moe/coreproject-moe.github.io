@@ -1,23 +1,23 @@
 type Icon = {
-  "icon-name": string;
-  type: string;
-  variants?: string[];
+	"icon-name": string;
+	type: string;
+	variants?: string[];
 };
 
 export function trigram_search(data: Icon[], query: string): Icon[] {
-  const trigrams = (str: string): string[] => {
-    const n = 3;
-    const trigrams: string[] = [];
-    for (let i = 0; i <= str.length - n; i++) {
-      trigrams.push(str.slice(i, i + n));
-    }
-    return trigrams;
-  };
+	const trigrams = (str: string): string[] => {
+		const n = 3;
+		const trigrams: string[] = [];
+		for (let i = 0; i <= str.length - n; i++) {
+			trigrams.push(str.slice(i, i + n));
+		}
+		return trigrams;
+	};
 
-  const queryTrigrams = trigrams(query.toLowerCase());
+	const queryTrigrams = trigrams(query.toLowerCase());
 
-  return data.filter((item) => {
-    const iconNameTrigrams = trigrams(item["icon-name"].toLowerCase());
-    return queryTrigrams.every((trigram) => iconNameTrigrams.includes(trigram));
-  });
+	return data.filter((item) => {
+		const iconNameTrigrams = trigrams(item["icon-name"].toLowerCase());
+		return queryTrigrams.every((trigram) => iconNameTrigrams.includes(trigram));
+	});
 }
