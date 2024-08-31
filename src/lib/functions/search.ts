@@ -1,5 +1,5 @@
 type Icon = {
-  'icon-name': string;
+  "icon-name": string;
   type: string;
   variants?: string[];
 };
@@ -17,9 +17,7 @@ export function trigram_search(data: Icon[], query: string): Icon[] {
   const queryTrigrams = trigrams(query.toLowerCase());
 
   return data.filter((item) => {
-    const iconNameTrigrams = trigrams(item['icon-name'].toLowerCase());
-    return queryTrigrams.every((trigram) =>
-      iconNameTrigrams.includes(trigram)
-    );
+    const iconNameTrigrams = trigrams(item["icon-name"].toLowerCase());
+    return queryTrigrams.every((trigram) => iconNameTrigrams.includes(trigram));
   });
 }
