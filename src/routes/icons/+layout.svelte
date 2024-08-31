@@ -4,7 +4,7 @@
 
 <div class="relative flex h-dvh w-full flex-col bg-secondary overflow-y-scroll">
   <header
-    class="sticky top-0 bg-secondary/90 backdrop-blur flex items-center justify-between md:h-16 md:px-3 container"
+    class="sticky top-0 z-10 bg-secondary/90 backdrop-blur flex items-center justify-between md:h-16 md:px-3 container"
   >
     <a href="{base}/icons">
       <coreproject-shape-logo class="w-9 md:w-[2.25vw] md:pt-[0.75vw]">
