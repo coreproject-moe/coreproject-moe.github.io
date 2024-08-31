@@ -13,7 +13,6 @@
 		uuid: string;
 		variant?: string;
 	} = $props();
-
 </script>
 
 <dialog id={uuid} class="modal backdrop:bg-transparent">
@@ -52,11 +51,14 @@
 					>
 				</div>
 				<code class="rounded-xl bg-secondary/75 p-2 text-sm">
-					<Highlight code={given_icon_name_return_html_string({
-						icon_type: type,
-						icon_name: icon,
-						variant
-					})}  language='html'/>
+					<Highlight
+						code={given_icon_name_return_html_string({
+							icon_type: type,
+							icon_name: icon,
+							variant
+						})}
+						language="html"
+					/>
 				</code>
 			</div>
 		</div>
