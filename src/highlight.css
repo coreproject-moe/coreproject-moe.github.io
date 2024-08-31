@@ -1,0 +1,128 @@
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #8f93a2;
+	background: none;
+	border-radius: 0.3em;
+	font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+
+	&[class*="language-"] {
+		background: #03020c; /* bg-secondary/75 */
+	}
+
+	&:not(pre) > & {
+		padding: 0.1em;
+		white-space: normal;
+	}
+
+	.token {
+		&.script.language-javascript {
+			color: #8f93a2;
+		}
+
+		&.comment,
+		&.block-comment,
+		&.prolog,
+		&.doctype,
+		&.cdata {
+			color: #464b5d;
+		}
+
+		&.attr-name,
+		&.namespace,
+		&.deleted {
+			color: #bb80b3;
+		}
+
+		&.function,
+		&.function-name {
+			color: #82aaff;
+		}
+
+		&.unit,
+		&.url,
+		&.boolean,
+		&.number {
+			color: #f78c6c;
+		}
+
+		&.color,
+		&.hexcode,
+		&.builtin,
+		&.property,
+		&.class,
+		&.class-name,
+		&.constant,
+		&.symbol {
+			color: #ffcb6b;
+		}
+
+		&.id,
+		&.selector,
+		&.important,
+		&.atrule,
+		&.keyword {
+			color: #c792ea;
+		}
+
+		&.pseudo-class,
+		&.pseudo-element,
+		&.inserted,
+		&.attribute,
+		&.string,
+		&.char,
+		&.attr-value,
+		&.regex,
+		&.variable {
+			color: #c3e88d;
+		}
+
+		&.punctuation,
+		&.operator,
+		&.entity,
+		&.url {
+			color: #89ddff;
+		}
+
+		&.tag {
+			color: #f07178;
+		}
+
+		&.parameter,
+		&.deleted {
+			color: #ff5370;
+		}
+
+		&.important,
+		&.bold {
+			font-weight: bold;
+		}
+
+		&.italic {
+			font-style: italic;
+		}
+
+		&.entity {
+			cursor: help;
+		}
+	}
+}
+
+pre[class*="language-"] {
+	padding: 2em;
+	margin: 0.5em 0;
+	overflow: auto;
+}
