@@ -2,14 +2,11 @@
   import icons_json from "$lib/icons.json";
   import IconDialog from "$lib/components/pages/icons/icon-dialog.svelte";
   import { given_icon_name_return_html_string } from "$lib/functions/icons";
+  import { v4 as uuidv4 } from "uuid";
 
   function open_icon_model(id: string) {
     const el = document.getElementById(id) as HTMLDialogElement;
     el?.showModal();
-  }
-
-  function generate_unique_id() {
-    return Math.random().toString(16).slice(2);
   }
 </script>
 
@@ -35,11 +32,11 @@
     {#each icons_json.sort( (a, b) => a["icon-name"].localeCompare(b["icon-name"]), ) as item}
       {@const icon = item["icon-name"]}
       {@const variants = item.variants}
-      {@const uuid = generate_unique_id()}
+      {@const uuid = uuidv4()}
 
       {#if variants}
         {#each variants as it}
-          {@const variant_uuid = generate_unique_id()}
+          {@const variant_uuid = uuidv4}
           <button
             class="w-full p-5 rounded-xl hover:bg-neutral/50 cursor-pointer transition-colors"
             onclick={() => open_icon_model(variant_uuid)}
