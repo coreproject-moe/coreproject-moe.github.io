@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { base } from "$app/paths";
 
-	const { children } = $props();
+	let { children } = $props();
 </script>
 
 <div class="relative flex h-dvh w-full flex-col overflow-y-scroll bg-secondary">

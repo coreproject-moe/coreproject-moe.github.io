@@ -2,6 +2,7 @@
 	import { onMount } from "svelte";
 	import "../global.css";
 	import { defineCustomElements } from "@coreproject-moe/icons/loader";
+	let { children } = $props();
 
 	onMount(() => {
 		defineCustomElements(globalThis.window);
@@ -9,7 +10,7 @@
 </script>
 
 <div class="bg-secondary">
-	<slot></slot>
+	{@render children()}
 </div>
 
 <!-- svelte-ignore css_unused_selector -->
