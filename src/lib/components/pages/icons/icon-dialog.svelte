@@ -16,9 +16,9 @@
 </script>
 
 <dialog id={uuid} class="modal backdrop:bg-transparent">
-	<div class="modal-box absolute bottom-10 h-max max-w-max bg-secondary p-0">
+	<div class="modal-box overflow-x-hidden absolute bottom-5 md:bottom-10 h-max md:max-w-max bg-secondary p-0">
 		<div class="flex w-full items-center bg-neutral/50 p-3">
-			<div class="flex flex-col gap-2">
+			<div class="flex flex-col gap-2 overflow-x-scroll">
 				<div class="flex items-center gap-2">
 					<div class="size-5">
 						{@html given_icon_name_return_html_string({
@@ -50,7 +50,7 @@
 						class="btn btn-primary btn-xs ml-auto">Copy</button
 					>
 				</div>
-				<code class="rounded-xl bg-secondary/75 p-2 text-sm">
+				<code class="rounded-xl overflow-x-scroll w-full bg-secondary/75 p-2 text-sm">
 					<Highlight
 						code={given_icon_name_return_html_string({
 							icon_type: type,
