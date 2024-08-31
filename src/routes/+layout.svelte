@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from "svelte";
 	import "../global.css";
+	import '../highlight.css'
 	import { defineCustomElements } from "@coreproject-moe/icons/loader";
 	let { children } = $props();
 

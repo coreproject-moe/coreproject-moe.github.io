@@ -1,4 +1,7 @@
 <script lang="ts">
+	import Highlight from "$lib/components/highlight.svelte";
+	import { given_icon_name_return_html_string } from "$lib/functions/icons";
+
 	const {
 		icon,
 		type,
@@ -11,7 +14,6 @@
 		variant?: string;
 	} = $props();
 
-	import { given_icon_name_return_html_string } from "$lib/functions/icons";
 </script>
 
 <dialog id={uuid} class="modal backdrop:bg-transparent">
@@ -50,11 +52,11 @@
 					>
 				</div>
 				<code class="rounded-xl bg-secondary/75 p-2 text-sm">
-					{given_icon_name_return_html_string({
+					<Highlight code={given_icon_name_return_html_string({
 						icon_type: type,
 						icon_name: icon,
 						variant
-					})}
+					})}  language='html'/>
 				</code>
 			</div>
 		</div>
