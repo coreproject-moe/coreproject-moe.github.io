@@ -17,7 +17,7 @@
 		</div>
 		<nav class="flex items-center gap-4 md:gap-5">
 			<a href="{base}/icons" class="text-accent">Icons</a>
-			<a href="{base}/icons/usage">Usage</a>
+			<!-- <a href="{base}/icons/usage">Usage</a> -->
 			<a href="https://github.com/coreproject-moe/monorepo">
 				<coreproject-logo-github class="size-5"> </coreproject-logo-github>
 			</a>
