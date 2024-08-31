@@ -68,7 +68,7 @@
 								variant: it
 							})}
 						</button>
-						<IconDialog uuid={variant_uuid} {icon} {icon_type} variant={it} />
+						<IconDialog type={icon_type} uuid={variant_uuid} {icon} variant={it} />
 					{/each}
 				{:else}
 					{@const uuid = uuidv4()}
@@ -83,7 +83,7 @@
 							classname: "text-accent"
 						})}
 					</button>
-					<IconDialog {uuid} {icon_type} {icon} />
+					<IconDialog type={icon_type} {uuid} {icon} />
 				{/if}
 			{/each}
 		{/if}
