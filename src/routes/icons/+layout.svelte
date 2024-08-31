@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { base } from "$app/paths";
+
+	let { children } = $props();
 </script>
 
 <div class="relative flex h-dvh w-full flex-col overflow-y-scroll bg-secondary">
@@ -19,7 +21,7 @@
 	</header>
 	<div class="flex flex-1 justify-center">
 		<div class="max-w-xl">
-			<slot />
+			{@render children()}
 		</div>
 	</div>
 </div>
