@@ -29,12 +29,12 @@
 	}
 </script>
 
-<div class="flex flex-col gap-10 py-20">
+<div class="flex flex-col gap-10 py-10 md:py-20 px-5 md:px-0">
 	<div class="flex flex-col gap-5 md:px-10">
-		<p class="text-center text-5xl font-black text-info">
+		<p class="text-center text-4xl md:text-5xl font-black text-info">
 			<span class="text-warning">Core Icons.</span><br />Beautifully crafted.
 		</p>
-		<p class="text-acccent/70 text-center text-lg">
+		<p class="text-acccent/70 text-center text-sm md:text-lg">
 			Fully customizable SVG icons, open-source under the MIT license, and created by
 			@coreproject-team.
 		</p>
@@ -44,10 +44,10 @@
 		<input
 			oninput={handle_input}
 			placeholder="Search icons..."
-			class="w-full rounded-xl border-none bg-neutral p-4 pl-12 font-semibold outline-none transition focus:ring-[0.2rem]"
+			class="w-full rounded-xl border-none bg-neutral p-4 pl-12 font-semibold outline-none transition focus:ring-2 md:focus:ring-[0.2rem]"
 		/>
 	</div>
-	<div class="grid grid-cols-8 gap-2">
+	<div class="grid grid-cols-5 md:grid-cols-8 gap-2">
 		{#if icons}
 			{#each icons.sort((a, b) => a["icon-name"].localeCompare(b["icon-name"])) as item}
 				{@const icon = item["icon-name"]}
