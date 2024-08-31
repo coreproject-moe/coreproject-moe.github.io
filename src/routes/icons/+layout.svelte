@@ -4,12 +4,12 @@
 	let { children } = $props();
 </script>
 
-<div class="relative flex h-dvh w-full flex-col overflow-y-scroll bg-secondary">
+<div class="relative h-dvh w-full overflow-y-scroll bg-secondary">
 	<header
 		class="container sticky top-0 z-10 flex items-center justify-between bg-secondary/90 backdrop-blur md:h-16 md:px-3"
 	>
 		<a href="{base}/icons">
-			<coreproject-shape-logo class="w-9 md:w-[2.25vw] md:pt-[0.75vw]"> </coreproject-shape-logo>
+			<coreproject-shape-logo class="w-7 pt-2"> </coreproject-shape-logo>
 		</a>
 		<nav class="flex items-center gap-5">
 			<a href="{base}/icons" class="text-accent">Icons</a>
