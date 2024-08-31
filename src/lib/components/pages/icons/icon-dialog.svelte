@@ -53,7 +53,6 @@
 					{given_icon_name_return_html_string({
 						icon_type: type,
 						icon_name: icon,
-						classname: "text-accent",
 						variant
 					})}
 				</code>
