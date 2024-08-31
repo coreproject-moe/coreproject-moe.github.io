@@ -15,6 +15,6 @@
 	onMount(() => {
 		highlighted_code = hljs.highlight(code, { language }).value;
 	});
-</script>	
+</script>
 
 <pre class="language-{language}"><code>{@html highlighted_code}</code></pre>
