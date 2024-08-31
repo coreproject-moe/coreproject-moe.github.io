@@ -6,7 +6,7 @@ type Icon = {
 
 export function trigram_search(data: Icon[], query: string): Icon[] {
   const trigrams = (str: string): string[] => {
-    const n = 1;
+    const n = 3;
     const trigrams: string[] = [];
     for (let i = 0; i <= str.length - n; i++) {
       trigrams.push(str.slice(i, i + n));
