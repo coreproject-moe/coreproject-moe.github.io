@@ -4,6 +4,7 @@
     import { given_icon_name_return_html_string } from '$lib/functions/icons';
     import { onMount } from 'svelte';
     import { trigram_search } from '$lib/functions/search';
+    import { v4 as uuidv4 } from 'uuid';
 
     let icons: typeof icons_json | null = null;
 
@@ -25,10 +26,6 @@
     function open_icon_model(id: string) {
         const el = document.getElementById(id) as HTMLDialogElement;
         el?.showModal();
-    }
-
-    function generate_unique_id() {
-        return Math.random().toString(16).slice(2);
     }
 </script>
 
@@ -58,11 +55,10 @@
                 {@const icon = item['icon-name']}
                 {@const variants = item.variants}
                 {@const icon_type = item.type}
-                {@const uuid = generate_unique_id()}
 
                 {#if variants}
                     {#each variants as it}
-                        {@const variant_uuid = generate_unique_id()}
+                        {@const variant_uuid = uuidv4()}
                         <button
                             class="w-full p-5 rounded-xl hover:bg-neutral/50 cursor-pointer transition-colors"
                             onclick={() => open_icon_model(variant_uuid)}
@@ -77,6 +73,8 @@
                         <IconDialog uuid={variant_uuid} {icon} variant={it} />
                     {/each}
                 {:else}
+                    {@const uuid = uuidv4()}
+
                     <button
                         class="w-full p-5 rounded-xl hover:bg-neutral/50 cursor-pointer transition-colors"
                         onclick={() => open_icon_model(uuid)}
