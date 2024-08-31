@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { onMount } from "svelte";
 	import hljs from "highlight.js";
-	import "highlight.js/styles/default.css"; // Include the default style or choose another style
 
 	const {
 		code,
