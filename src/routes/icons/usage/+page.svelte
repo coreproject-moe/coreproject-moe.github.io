@@ -4,21 +4,18 @@
 	const installation_mapping = [
 		{
 			type: "React (Vite)",
-			code: `
-// src/App.tsx
+			code: `// src/App.tsx
 import { defineCustomElements } from "@coreproject-moe/icons/loader";
 
 function App(){
 	defineCustomElements();
 	return <></>
-}
-		`,
+}`,
 			language: "tsx"
 		},
 		{
 			type: "React (Next.js)",
-			code: `
-// app/layout.tsx
+			code: `// app/layout.tsx
 import { defineCustomElements } from "@coreproject-moe/icons/loader";
 
 export default function RootLayout({
@@ -33,14 +30,12 @@ export default function RootLayout({
       <body>{children}</body>
     </html>
   )
-}
-			`,
+}`,
 			language: "tsx"
 		},
 		{
 			type: "SvelteKit",
-			code: `
-<!-- src/routes/layout.svelte -->
+			code: `<!-- src/routes/layout.svelte -->
 <script lang='ts'>
 	import { defineCustomElements } from "@coreproject-moe/icons/loader";
 	import { onMount } from 'svelte';
@@ -48,8 +43,7 @@ export default function RootLayout({
 	onMount(()=>{
 		defineCustomElements();
 	})
-</ script>
-			`,
+</ script>`,
 			language: "tsx"
 		}
 	];
@@ -79,7 +73,10 @@ export default function RootLayout({
 				class="tab !w-max bg-transparent !outline-none !ring-0 checked:!bg-neutral/50 checked:!bg-[url('')]"
 				aria-label={item.type}
 			/>
-			<div role="tabpanel" class="tab-content rounded-box bg-neutral/25 p-4">
+			<div
+				role="tabpanel"
+				class={`tab-content overflow-x-scroll [&>pre]:m-0 ${idx === 0 && "[&>pre]:rounded-tl-none"}`}
+			>
 				<Highlight language={item.language} code={item.code} />
 			</div>
 		{/each}
