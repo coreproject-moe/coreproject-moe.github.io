@@ -1,21 +1,24 @@
-<script>
+<script lang="ts">
 	import Highlight from "$lib/components/highlight.svelte";
 
-	const installation_mapping = [
+	const installation_mapping: { type: string; code: String; language: string }[] = [
 		{
 			type: "React (Vite)",
-			code: `// src/App.tsx
+			code: `
+// src/App.tsx
 import { defineCustomElements } from "@coreproject-moe/icons/loader";
 
 function App(){
 	defineCustomElements();
 	return <></>
-}`,
+}
+		`,
 			language: "tsx"
 		},
 		{
 			type: "React (Next.js)",
-			code: `// app/layout.tsx
+			code: `
+// app/layout.tsx
 import { defineCustomElements } from "@coreproject-moe/icons/loader";
 
 export default function RootLayout({
@@ -30,12 +33,14 @@ export default function RootLayout({
       <body>{children}</body>
     </html>
   )
-}`,
+}
+  	`,
 			language: "tsx"
 		},
 		{
 			type: "SvelteKit",
-			code: `<!-- src/routes/layout.svelte -->
+			code: `
+<!-- src/routes/layout.svelte -->
 <script lang='ts'>
 	import { defineCustomElements } from "@coreproject-moe/icons/loader";
 	import { onMount } from 'svelte';
@@ -43,8 +48,16 @@ export default function RootLayout({
 	onMount(()=>{
 		defineCustomElements();
 	})
-</ script>`,
-			language: "tsx"
+<\/script>
+		`,
+			language: "Html"
+		},
+		{
+			type: "Html",
+			code: `
+<script type="module" src='https://unpkg.com/@coreproject-moe/icons@latest'><\/script>
+			`,
+			language: "html"
 		}
 	];
 </script>
@@ -63,12 +76,14 @@ export default function RootLayout({
 		code in your main entry file.
 	</p>
 	<Highlight language="bash" code="npm install @coreproject-moe/icons" />
+
+	Here is how to use it with different frameworks:
 	<div role="tablist" class="tabs tabs-lifted">
 		{#each installation_mapping as item, idx}
 			<input
 				checked={idx === 0}
 				type="radio"
-				name="my_tabs_2"
+				name="code_items"
 				role="tab"
 				class="tab !w-max bg-transparent !outline-none !ring-0 checked:!bg-neutral/50 checked:!bg-[url('')]"
 				aria-label={item.type}
@@ -77,7 +92,7 @@ export default function RootLayout({
 				role="tabpanel"
 				class={`tab-content overflow-x-scroll [&>pre]:m-0 ${idx === 0 && "[&>pre]:rounded-tl-none"}`}
 			>
-				<Highlight language={item.language} code={item.code} />
+				<Highlight language={item.language} code={item.code.trim()} />
 			</div>
 		{/each}
 	</div>
@@ -87,7 +102,7 @@ export default function RootLayout({
 		the <code>coreproject-[shape|logo]-[icon-name]</code>
 		component:
 	</p>
-	<Highlight language="xml" code="<coreproject-shape-airplay></coreproject-shape-airplay>" />
+	<Highlight language="html" code="<coreproject-shape-airplay></coreproject-shape-airplay>" />
 	<h2>Variants</h2>
 	<p>
 		There are some icons with variants, you can use different variants of one icon with an <code
@@ -95,16 +110,20 @@ export default function RootLayout({
 		>: <code>variant</code> like:
 	</p>
 	<Highlight
-		language="xml"
+		language="html"
 		code="<coreproject-shape-align variant='justify'></coreproject-shape-align>"
 	/>
-	<h2>Props/Attrs</h2>
+	<h2>Properties / Attributes</h2>
 	<p>
-		You can provide all <code>SVGAttributes</code> just like normal html <code>attrs</code> like:
+		You can provide
+		{#each ["width", "height", "_style"] as item}
+			<code>{item}</code>
+		{/each}
+		that will be passed to the shadow svg. Here is an example:
 	</p>
 	<Highlight
-		language="xml"
-		code="<coreproject-shape-airplay class='text-primary' width=200 height=200></coreproject-shape-airplay>"
+		language="html"
+		code="<coreproject-shape-airplay class='text-primary' width='200' height='200' _style='color: black'></coreproject-shape-airplay>"
 	/>
 	<hr />
 	<h3>Issue Tracker</h3>
