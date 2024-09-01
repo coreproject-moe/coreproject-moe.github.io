@@ -10,7 +10,6 @@ import { defineCustomElements } from "@coreproject-moe/icons/loader";
 
 function App(){
 	defineCustomElements();
-
 	return <></>
 }
 		`,
@@ -35,7 +34,6 @@ export default function RootLayout({
     </html>
   )
 }
-
 			`,
 			language: "tsx"
 		},
@@ -43,21 +41,18 @@ export default function RootLayout({
 			type: "SvelteKit",
 			code: `
 <!-- src/routes/layout.svelte -->
-&lt;script lang='ts'&gt
+<script lang='ts'>
 	import { defineCustomElements } from "@coreproject-moe/icons/loader";
 	import { onMount } from 'svelte';
 
 	onMount(()=>{
 		defineCustomElements();
 	})
-
-&lt;/script&gt
+</ script>
 			`,
-			language: "svelte"
+			language: "tsx"
 		}
 	];
-
-	console.log(installation_mapping);
 </script>
 
 <div
@@ -69,52 +64,26 @@ export default function RootLayout({
 		Coreicons was made for CoreProject, a streaming platform.
 	</p>
 	<h2>Installation</h2>
-	<p>You can install Coreicons from npm with your favorite package manager.</p>
+	<p>
+		You can install Coreicons from npm with your favorite package manager. And place the following
+		code in your main entry file.
+	</p>
 	<Highlight language="bash" code="npm install @coreproject-moe/icons" />
-	<p>And place the following code in your main entry file.</p>
 	<div role="tablist" class="tabs tabs-lifted">
-		<input
-			checked
-			type="radio"
-			name="my_tabs_2"
-			role="tab"
-			class="tab bg-transparent !outline-none !ring-0 checked:!bg-neutral/50 checked:!bg-[url('')]"
-			aria-label="Tab 1"
-		/>
-		<div role="tabpanel" class="tab-content rounded-box bg-neutral/25 p-4">Tab content 1</div>
-
-		<input
-			type="radio"
-			name="my_tabs_2"
-			role="tab"
-			class="tab bg-transparent !outline-none !ring-0 checked:!bg-neutral/50 checked:!bg-[url('')]"
-			aria-label="Tab 2"
-		/>
-		<div role="tabpanel" class="tab-content rounded-box bg-neutral/25 p-4">Tab content 2</div>
-
-		<input
-			type="radio"
-			name="my_tabs_2"
-			role="tab"
-			class="tab bg-transparent !outline-none !ring-0 checked:!bg-neutral/50 checked:!bg-[url('')]"
-			aria-label="Tab 3"
-		/>
-		<div role="tabpanel" class="tab-content rounded-box bg-neutral/25 p-4">Tab content 3</div>
+		{#each installation_mapping as item, idx}
+			<input
+				checked={idx === 0}
+				type="radio"
+				name="my_tabs_2"
+				role="tab"
+				class="tab !w-max bg-transparent !outline-none !ring-0 checked:!bg-neutral/50 checked:!bg-[url('')]"
+				aria-label={item.type}
+			/>
+			<div role="tabpanel" class="tab-content rounded-box bg-neutral/25 p-4">
+				<Highlight language={item.language} code={item.code} />
+			</div>
+		{/each}
 	</div>
-	<Highlight
-		language="jsx"
-		code={`import { defineCustomElements } from "@coreproject-moe/icons/loader";
-
-render(() => {
-  onMount(() => {
-    defineCustomElements(window);
-  });
-
-  return (
-    <coreproject-shape-github class="md:size-5 text-accent"></coreproject-shape-github>
-  );
-}, document.getElementById("root")!);`}
-	/>
 	<h2>Basic Usage</h2>
 	<p>
 		To use a built-in icon from the Ionicons package, populate the <code>name</code> attribute on
