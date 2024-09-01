@@ -72,6 +72,35 @@ export default function RootLayout({
 	<p>You can install Coreicons from npm with your favorite package manager.</p>
 	<Highlight language="bash" code="npm install @coreproject-moe/icons" />
 	<p>And place the following code in your main entry file.</p>
+	<div role="tablist" class="tabs tabs-lifted">
+		<input
+			checked
+			type="radio"
+			name="my_tabs_2"
+			role="tab"
+			class="tab bg-transparent !outline-none !ring-0 checked:!bg-neutral/50 checked:!bg-[url('')]"
+			aria-label="Tab 1"
+		/>
+		<div role="tabpanel" class="tab-content rounded-box bg-neutral/25 p-4">Tab content 1</div>
+
+		<input
+			type="radio"
+			name="my_tabs_2"
+			role="tab"
+			class="tab bg-transparent !outline-none !ring-0 checked:!bg-neutral/50 checked:!bg-[url('')]"
+			aria-label="Tab 2"
+		/>
+		<div role="tabpanel" class="tab-content rounded-box bg-neutral/25 p-4">Tab content 2</div>
+
+		<input
+			type="radio"
+			name="my_tabs_2"
+			role="tab"
+			class="tab bg-transparent !outline-none !ring-0 checked:!bg-neutral/50 checked:!bg-[url('')]"
+			aria-label="Tab 3"
+		/>
+		<div role="tabpanel" class="tab-content rounded-box bg-neutral/25 p-4">Tab content 3</div>
+	</div>
 	<Highlight
 		language="jsx"
 		code={`import { defineCustomElements } from "@coreproject-moe/icons/loader";
