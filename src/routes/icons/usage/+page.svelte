@@ -1,5 +1,63 @@
 <script>
 	import Highlight from "$lib/components/highlight.svelte";
+
+	const installation_mapping = [
+		{
+			type: "React (Vite)",
+			code: `
+// src/App.tsx
+import { defineCustomElements } from "@coreproject-moe/icons/loader";
+
+function App(){
+	defineCustomElements();
+
+	return <></>
+}
+		`,
+			language: "tsx"
+		},
+		{
+			type: "React (Next.js)",
+			code: `
+// app/layout.tsx
+import { defineCustomElements } from "@coreproject-moe/icons/loader";
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  defineCustomElements();
+
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}
+
+			`,
+			language: "tsx"
+		},
+		{
+			type: "SvelteKit",
+			code: `
+<!-- src/routes/layout.svelte -->
+&lt;script lang='ts'&gt
+	import { defineCustomElements } from "@coreproject-moe/icons/loader";
+	import { onMount } from 'svelte';
+
+	onMount(()=>{
+		defineCustomElements();
+	})
+
+&lt;/script&gt
+			`,
+			language: "svelte"
+		}
+	];
+
+	console.log(installation_mapping);
 </script>
 
 <div
@@ -60,5 +118,5 @@ render(() => {
 			href="https://github.com/coreproject-moe/monorepo/issues">here.</a
 		>
 	</p>
-  <p>Thank you!</p>
+	<p>Thank you!</p>
 </div>
