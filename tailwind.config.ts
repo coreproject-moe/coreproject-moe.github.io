@@ -9,7 +9,6 @@ import type { Config } from "tailwindcss";
 // Import plugins
 import forms from "@tailwindcss/forms";
 import typography from "@tailwindcss/typography";
-import aspectRatio from "@tailwindcss/aspect-ratio";
 import scrollbar from "tailwind-scrollbar";
 import daisyui from "daisyui";
 
@@ -33,7 +32,6 @@ export default {
 		 */
 		forms,
 		typography,
-		aspectRatio,
 		scrollbar,
 		daisyui
 	],
