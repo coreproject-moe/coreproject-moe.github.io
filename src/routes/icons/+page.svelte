@@ -29,9 +29,9 @@
 	}
 </script>
 
-<div class="flex flex-col gap-10 py-10 md:py-20 px-5 md:px-0">
+<div class="flex flex-col gap-10 px-5 py-10 md:px-0 md:py-20">
 	<div class="flex flex-col gap-5 md:px-10">
-		<p class="text-center text-4xl md:text-5xl font-black text-info">
+		<p class="text-center text-4xl font-black text-info md:text-5xl">
 			<span class="text-warning">Core Icons.</span><br />Beautifully crafted.
 		</p>
 		<p class="text-acccent/70 text-center text-sm md:text-lg">
@@ -47,7 +47,7 @@
 			class="w-full rounded-xl border-none bg-neutral p-4 pl-12 font-semibold outline-none transition focus:ring-2 md:focus:ring-[0.2rem]"
 		/>
 	</div>
-	<div class="grid grid-cols-5 md:grid-cols-8 gap-2">
+	<div class="grid grid-cols-5 gap-2 md:grid-cols-8">
 		{#if icons}
 			{#each icons.sort((a, b) => a["icon-name"].localeCompare(b["icon-name"])) as item}
 				{@const icon = item["icon-name"]}
@@ -58,13 +58,13 @@
 					{#each variants as it}
 						{@const variant_uuid = uuidv4()}
 						<button
-							class="w-full cursor-pointer rounded-xl p-5 transition-colors hover:bg-neutral/50"
+							class="grid aspect-square cursor-pointer place-items-center rounded-xl transition-colors hover:bg-neutral/50 hover:text-accent"
 							onclick={() => open_icon_model(variant_uuid)}
 						>
 							{@html given_icon_name_return_html_string({
 								icon_name: icon,
 								icon_type: icon_type,
-								classname: "text-accent",
+								classname: "size-5",
 								variant: it
 							})}
 						</button>
@@ -74,13 +74,13 @@
 					{@const uuid = uuidv4()}
 
 					<button
-						class="w-full cursor-pointer rounded-xl p-5 transition-colors hover:bg-neutral/50"
+						class="grid aspect-square cursor-pointer place-items-center rounded-xl transition-colors hover:bg-neutral/50 hover:text-accent"
 						onclick={() => open_icon_model(uuid)}
 					>
 						{@html given_icon_name_return_html_string({
 							icon_name: icon,
 							icon_type: icon_type,
-							classname: "text-accent"
+							classname: "size-5"
 						})}
 					</button>
 					<IconDialog type={icon_type} {uuid} {icon} />
