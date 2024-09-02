@@ -26,7 +26,7 @@
 						{@html given_icon_name_return_html_string({
 							icon_type: type,
 							icon_name: icon,
-							classname: "text-accent",
+							classname: "size-5",
 							variant
 						})}
 					</div>
@@ -41,7 +41,6 @@
 									given_icon_name_return_html_string({
 										icon_type: type,
 										icon_name: icon,
-										classname: "text-accent"
 									})
 								)
 								.then(() => {
