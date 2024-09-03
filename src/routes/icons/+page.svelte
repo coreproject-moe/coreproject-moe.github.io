@@ -40,7 +40,7 @@
 		</p>
 	</div>
 	<div class="relative flex w-full items-center">
-		<coreproject-shape-globe class="absolute left-4 size-5"></coreproject-shape-globe>
+		<coreproject-shape-search class="absolute left-4 size-5 stroke-2"></coreproject-shape-search>
 		<input
 			oninput={handle_input}
 			placeholder="Search icons..."
