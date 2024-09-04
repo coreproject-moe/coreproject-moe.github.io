@@ -17,6 +17,7 @@
 			"right-down"
 		]
 	},
+	{ "icon-name": "toggle", "type": "shape", "variants": ["off", "on"] },
 	{ "icon-name": "align", "type": "shape", "variants": ["center", "justify", "left", "right"] },
 	{ "icon-name": "bell", "type": "shape", "variants": ["on", "off"] },
 	{ "icon-name": "book", "type": "shape", "variants": ["open", "close"] },
@@ -29,7 +30,6 @@
 	{ "icon-name": "link", "type": "shape", "variants": ["tilted", "horizontal"] },
 	{ "icon-name": "plus", "type": "shape", "variants": ["no-border", "circle", "square"] },
 	{ "icon-name": "shield", "type": "shape", "variants": ["on", "off"] },
-	{ "icon-name": "toggle", "type": "shape", "variants": ["off", "on"] },
 	{ "icon-name": "trash", "type": "shape", "variants": ["with-lines", "without-lines"] },
 	{ "icon-name": "upload", "type": "shape", "variants": ["arrow", "cloud"] },
 	{ "icon-name": "user", "type": "shape", "variants": ["normal", "check", "minus", "plus", "x"] },
@@ -121,8 +121,8 @@
 	{ "icon-name": "underline", "type": "shape" },
 	{ "icon-name": "unlock", "type": "shape" },
 	{ "icon-name": "users", "type": "shape" },
-	{ "icon-name": "bold", "type": "shape" },
 	{ "icon-name": "github", "type": "logo" },
+	{ "icon-name": "bold", "type": "shape" },
 	{ "icon-name": "italic", "type": "shape" },
 	{ "icon-name": "menu", "type": "shape" }
 ]
