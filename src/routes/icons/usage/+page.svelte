@@ -56,6 +56,7 @@ export default function RootLayout({
 			type: "Html",
 			code: `
 <script type="module" src='https://unpkg.com/@coreproject-moe/icons@latest'><\/script>
+<script nomodule src="https://unpkg.com/@coreproject-moe/icons@latest/dist/coreproject-icons/coreproject-icons.js"><\/script>
 			`,
 			language: "html"
 		}
