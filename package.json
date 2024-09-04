@@ -25,7 +25,7 @@
 		"postcss": "^8.4.44",
 		"prettier-plugin-svelte": "^3.2.6",
 		"prettier-plugin-tailwindcss": "^0.6.6",
-		"sass": "^1.77.8",
+		"sass": "^1.78.0",
 		"svelte": "^5.0.0-next.243",
 		"svelte-check": "^4.0.0",
 		"tailwind-scrollbar": "^3.1.0",
