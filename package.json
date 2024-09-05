@@ -14,7 +14,7 @@
 		"@coreproject-moe/icons": "^0.0.44",
 		"@sveltejs/adapter-static": "^3.0.4",
 		"@sveltejs/kit": "^2.5.25",
-		"@sveltejs/vite-plugin-svelte": "^4.0.0-next.6",
+		"@sveltejs/vite-plugin-svelte": "^4.0.0-next.7",
 		"@tailwindcss/forms": "^0.5.8",
 		"@tailwindcss/typography": "^0.5.15",
 		"@types/prismjs": "^1.26.4",
