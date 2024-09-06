@@ -32,6 +32,10 @@
 					</div>
 					<span class="text-lg font-semibold text-accent">
 						{icon}
+
+						{#if variant}
+							({variant})
+						{/if}
 					</span>
 					<button
 						onclick={(e) => {

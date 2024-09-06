@@ -4,20 +4,24 @@ type Icon = {
 	variants?: string[];
 };
 
-export function trigram_search(data: Icon[], query: string): Icon[] {
-	const trigrams = (str: string): string[] => {
-		const n = 3;
-		const trigrams: string[] = [];
+export function bigram_search(data: Icon[], query: string): Icon[] {
+	const bigrams = (str: string): string[] => {
+		const n = 2;
+		const bigrams: string[] = [];
 		for (let i = 0; i <= str.length - n; i++) {
-			trigrams.push(str.slice(i, i + n));
+			bigrams.push(str.slice(i, i + n));
 		}
-		return trigrams;
+		return bigrams;
 	};
 
-	const queryTrigrams = trigrams(query.toLowerCase());
+	const querybigrams = bigrams(query.toLowerCase());
 
 	return data.filter((item) => {
-		const iconNameTrigrams = trigrams(item["icon-name"].toLowerCase());
-		return queryTrigrams.every((trigram) => iconNameTrigrams.includes(trigram));
+		const iconNamebigrams = bigrams(item["icon-name"].toLowerCase());
+		return querybigrams.every((bigram) => iconNamebigrams.includes(bigram));
 	});
+}
+
+export function linear_search(data: Icon[], query: string): Icon[] {
+	return data.filter((icon) => icon["icon-name"].toLowerCase().includes(query.toLowerCase()));
 }

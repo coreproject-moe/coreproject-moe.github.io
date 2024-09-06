@@ -1,14 +1,16 @@
 <script lang="ts">
-	import icons_json from "$lib/icons.json";
 	import IconDialog from "$lib/components/pages/icons/icon-dialog.svelte";
 	import { given_icon_name_return_html_string } from "$lib/functions/icons";
 	import { onMount } from "svelte";
-	import { trigram_search } from "$lib/functions/search";
+	import { bigram_search, linear_search } from "$lib/functions/search";
 	import { v4 as uuidv4 } from "uuid";
+
+	let icons_json: { "icon-name": string; type: string; variants?: string[] }[];
 
 	let icons: typeof icons_json | null = null;
 
-	onMount(() => {
+	onMount(async () => {
+		icons_json = (await import("$lib/icons.json")).default;
 		icons = icons_json;
 	});
 
@@ -16,10 +18,12 @@
 		const target = event.target as HTMLInputElement;
 		const value = target.value;
 
-		if (value) {
-			icons = trigram_search(icons_json, value);
-		} else {
+		if (value.length === 0) {
 			icons = icons_json;
+		} else if (value.length === 1) {
+			icons = linear_search(icons_json, value);
+		} else if (value.length > 1) {
+			icons = bigram_search(icons_json, value);
 		}
 	}
 
@@ -42,7 +46,10 @@
 	<div class="relative flex w-full items-center">
 		<coreproject-shape-search class="absolute left-4 size-5 stroke-2"></coreproject-shape-search>
 		<input
-			oninput={handle_input}
+			oninput={(event) => {
+				event.preventDefault();
+				handle_input(event);
+			}}
 			placeholder="Search icons..."
 			class="w-full rounded-xl border-none bg-neutral p-4 pl-12 font-semibold outline-none transition focus:ring-2 md:focus:ring-[0.2rem]"
 		/>
@@ -56,10 +63,10 @@
 
 				{#if variants}
 					{#each variants as it}
-						{@const variant_uuid = uuidv4()}
+						{@const uuid = uuidv4()}
 						<button
 							class="grid aspect-square cursor-pointer place-items-center rounded-xl transition-colors hover:bg-neutral/50 hover:text-accent"
-							onclick={() => open_icon_model(variant_uuid)}
+							onclick={() => open_icon_model(uuid)}
 						>
 							{@html given_icon_name_return_html_string({
 								icon_name: icon,
@@ -68,11 +75,10 @@
 								variant: it
 							})}
 						</button>
-						<IconDialog type={icon_type} uuid={variant_uuid} {icon} variant={it} />
+						<IconDialog type={icon_type} {uuid} {icon} variant={it} />
 					{/each}
 				{:else}
 					{@const uuid = uuidv4()}
-
 					<button
 						class="grid aspect-square cursor-pointer place-items-center rounded-xl transition-colors hover:bg-neutral/50 hover:text-accent"
 						onclick={() => open_icon_model(uuid)}
