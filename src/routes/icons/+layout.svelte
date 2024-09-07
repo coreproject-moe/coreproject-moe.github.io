@@ -11,7 +11,7 @@
 	>
 		<div class="flex items-center gap-2">
 			<a href="{base}/icons">
-				<coreproject-shape-logo class="size-7"> </coreproject-shape-logo>
+				<coreproject-shape-logo class="size-7 flex"> </coreproject-shape-logo>
 			</a>
 			<Coreicons class="hidden h-5 md:flex" />
 		</div>
