@@ -11,7 +11,7 @@
 	>
 		<div class="flex items-center gap-2">
 			<a href="{base}/icons">
-				<coreproject-shape-logo class="size-7 flex"> </coreproject-shape-logo>
+				<coreproject-shape-logo class="flex size-7"> </coreproject-shape-logo>
 			</a>
 			<Coreicons class="hidden h-5 md:flex" />
 		</div>
@@ -24,7 +24,7 @@
 		</nav>
 	</header>
 	<div class="flex flex-1 justify-center">
-		<div class="max-w-[100vw] md:max-w-xl">
+		<div class="w-full md:max-w-xl">
 			{@render children()}
 		</div>
 	</div>
