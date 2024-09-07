@@ -24,7 +24,7 @@
 		</nav>
 	</header>
 	<div class="flex flex-1 justify-center">
-		<div class="max-w-xl">
+		<div class="max-w-[100vw] md:max-w-xl">
 			{@render children()}
 		</div>
 	</div>
