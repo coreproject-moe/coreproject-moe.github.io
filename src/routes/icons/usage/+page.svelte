@@ -50,7 +50,7 @@ export default function RootLayout({
 	})
 <\/script>
 		`,
-			language: "Html"
+			language: "html"
 		},
 		{
 			type: "Html",
@@ -79,7 +79,7 @@ export default function RootLayout({
 	<Highlight language="bash" code="npm install @coreproject-moe/icons" />
 
 	Here is how to use it with different frameworks:
-	<div role="tablist" class="tabs tabs-lifted overflow-x-scroll">
+	<div role="tablist" class="tabs tabs-lifted overflow-x-scroll pt-5">
 		{#each installation_mapping as item, idx}
 			<input
 				checked={idx === 0}
