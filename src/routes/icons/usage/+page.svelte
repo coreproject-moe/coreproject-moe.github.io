@@ -117,7 +117,7 @@ export default function RootLayout({
 	<h2>Properties / Attributes</h2>
 	<p>
 		You can provide
-		{#each ["width", "height", "_style"] as item}
+		{#each ["width,", "height,", "_style"] as item}
 			<code>{item}</code>
 		{/each}
 		that will be passed to the shadow svg. Here is an example:

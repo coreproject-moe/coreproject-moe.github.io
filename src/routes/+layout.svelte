@@ -9,9 +9,7 @@
 	});
 </script>
 
-<div class="bg-secondary">
-	{@render children()}
-</div>
+{@render children()}
 
 <!-- svelte-ignore css_unused_selector -->
 <style lang="scss" global>
