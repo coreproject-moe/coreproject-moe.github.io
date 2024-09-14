@@ -13,7 +13,11 @@
 	let dialog_elements = $state(new SvelteMap<string, HTMLDialogElement>());
 
 	onMount(async () => {
-		icons_json = (await import("$lib/icons.json")).default;
+		icons_json = (
+			await import("$lib/icons.json", {
+				assert: { type: "json" }
+			})
+		).default;
 		icons = icons_json;
 	});
 
