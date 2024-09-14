@@ -7,7 +7,7 @@
 
 	let icons_json: { "icon-name": string; type: string; variants?: string[] }[];
 
-	let icons: typeof icons_json | null = null;
+	let icons = $state<null | typeof icons_json>(null);
 
 	onMount(async () => {
 		icons_json = (await import("$lib/icons.json")).default;
@@ -66,7 +66,9 @@
 						{@const uuid = uuidv4()}
 						<button
 							class="grid aspect-square cursor-pointer place-items-center rounded-xl transition-colors hover:bg-neutral/50 hover:text-accent"
-							onclick={() => open_icon_model(uuid)}
+							onclick={() => {
+								open_icon_model(uuid);
+							}}
 						>
 							{@html given_icon_name_return_html_string({
 								icon_name: icon,
@@ -81,7 +83,9 @@
 					{@const uuid = uuidv4()}
 					<button
 						class="grid aspect-square cursor-pointer place-items-center rounded-xl transition-colors hover:bg-neutral/50 hover:text-accent"
-						onclick={() => open_icon_model(uuid)}
+						onclick={() => {
+							open_icon_model(uuid);
+						}}
 					>
 						{@html given_icon_name_return_html_string({
 							icon_name: icon,
