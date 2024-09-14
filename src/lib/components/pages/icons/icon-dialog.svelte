@@ -26,7 +26,7 @@
 	});
 </script>
 
-<dialog bind:this={dialog_element} id={uuid} class="modal backdrop:bg-transparent">
+<dialog bind:this={dialog_element} class="modal backdrop:bg-transparent">
 	<div
 		class="modal-box absolute bottom-5 h-max overflow-x-hidden bg-secondary p-0 md:bottom-10 md:max-w-max"
 	>
