@@ -4,10 +4,13 @@
 	import { onMount } from "svelte";
 	import { bigram_search, linear_search } from "$lib/functions/search";
 	import { v4 as uuidv4 } from "uuid";
+	import { SvelteMap } from "svelte/reactivity";
 
-	let icons_json: { "icon-name": string; type: string; variants?: string[] }[];
-
+	let icons_json = $state<{ "icon-name": string; type: string; variants?: string[] }[] | null>(
+		null
+	);
 	let icons = $state<null | typeof icons_json>(null);
+	let dialog_elements = $state(new SvelteMap<string, HTMLDialogElement>());
 
 	onMount(async () => {
 		icons_json = (await import("$lib/icons.json")).default;
@@ -15,6 +18,8 @@
 	});
 
 	function handle_input(event: Event) {
+		if (icons_json == null) return;
+
 		const target = event.target as HTMLInputElement;
 		const value = target.value;
 
@@ -28,8 +33,9 @@
 	}
 
 	function open_icon_model(id: string) {
-		const el = document.getElementById(id) as HTMLDialogElement;
-		el?.showModal();
+		console.log(id);
+		const el = dialog_elements.get(id);
+		el!.showModal();
 	}
 </script>
 
@@ -77,7 +83,7 @@
 								variant: it
 							})}
 						</button>
-						<IconDialog type={icon_type} {uuid} {icon} variant={it} />
+						<IconDialog {dialog_elements} type={icon_type} {uuid} {icon} variant={it} />
 					{/each}
 				{:else}
 					{@const uuid = uuidv4()}
@@ -85,6 +91,7 @@
 						class="grid aspect-square cursor-pointer place-items-center rounded-xl transition-colors hover:bg-neutral/50 hover:text-accent"
 						onclick={() => {
 							open_icon_model(uuid);
+							console.log(icon);
 						}}
 					>
 						{@html given_icon_name_return_html_string({
@@ -93,7 +100,7 @@
 							classname: "size-5"
 						})}
 					</button>
-					<IconDialog type={icon_type} {uuid} {icon} />
+					<IconDialog {dialog_elements} type={icon_type} {uuid} {icon} />
 				{/if}
 			{/each}
 		{/if}
