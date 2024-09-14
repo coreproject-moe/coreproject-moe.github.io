@@ -45,7 +45,12 @@
 		</p>
 		<p class="text-acccent/70 text-center text-sm md:text-lg">
 			Fully customizable SVG icons, open-source under the MIT license, and created by
-			@coreproject-team.
+			<a
+				rel="nofollow"
+				href="https://github.com/coreproject-moe/coreproject-moe.github.io/graphs/contributors"
+			>
+				@coreproject-team
+			</a>.
 		</p>
 	</div>
 	<div class="relative flex w-full items-center">
