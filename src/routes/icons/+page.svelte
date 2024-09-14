@@ -33,7 +33,6 @@
 	}
 
 	function open_icon_model(id: string) {
-		console.log(id);
 		const el = dialog_elements.get(id);
 		el!.showModal();
 	}
@@ -91,7 +90,6 @@
 						class="grid aspect-square cursor-pointer place-items-center rounded-xl transition-colors hover:bg-neutral/50 hover:text-accent"
 						onclick={() => {
 							open_icon_model(uuid);
-							console.log(icon);
 						}}
 					>
 						{@html given_icon_name_return_html_string({
