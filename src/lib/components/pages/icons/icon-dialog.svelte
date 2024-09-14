@@ -49,19 +49,18 @@
 						{/if}
 					</span>
 					<button
-						onclick={(e) => {
+						onclick={async (e) => {
 							const target = e.target as HTMLButtonElement;
-							navigator.clipboard
-								.writeText(
-									given_icon_name_return_html_string({
-										icon_type: type,
-										icon_name: icon
-									})
-								)
-								.then(() => {
-									target.innerText = "Copied";
-									setTimeout(() => (target.innerText = "Copy"), 2000);
-								});
+							await navigator.clipboard.writeText(
+								given_icon_name_return_html_string({
+									icon_type: type,
+									icon_name: icon
+								})
+							);
+							target.innerText = "Copied";
+							setTimeout(() => {
+								target.innerText = "Copy";
+							}, 2000);
 						}}
 						class="btn btn-primary btn-xs ml-auto">Copy</button
 					>
