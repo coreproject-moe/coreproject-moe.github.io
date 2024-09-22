@@ -20,7 +20,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ["Kokoro", "sans-serif"]
+				sans: ["Kokoro", "sans-serif"],
+				mono: ["Jetbrains Mono"]
 			}
 		}
 	},

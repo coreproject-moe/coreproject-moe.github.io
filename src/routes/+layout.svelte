@@ -55,4 +55,69 @@
 		font-style: normal;
 		font-display: swap;
 	}
+
+	@font-face {
+		font-family: "JetBrains Mono";
+		src: url("../fonts/Jetbrains\ Mono/JetBrainsMono-BoldItalic.woff2") format("woff2");
+		font-weight: 700;
+		font-style: italic;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "JetBrains Mono";
+		src: url("../fonts/Jetbrains\ Mono/JetBrainsMono-Bold.woff2") format("woff2");
+		font-weight: 700;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "JetBrains Mono";
+		src: url("../fonts/Jetbrains\ Mono/JetBrainsMono-ExtraBoldItalic.woff2") format("woff2");
+		font-weight: 800;
+		font-style: italic;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "JetBrains Mono";
+		src: url("../fonts/Jetbrains\ Mono/JetBrainsMono-ExtraBold.woff2") format("woff2");
+		font-weight: 800;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "JetBrains Mono";
+		src: url("../fonts/Jetbrains\ Mono/JetBrainsMono-Italic.woff2") format("woff2");
+
+		font-weight: 400;
+		font-style: italic;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "JetBrains Mono";
+		src: url("../fonts/Jetbrains\ Mono/JetBrainsMono-MediumItalic.woff2") format("woff2");
+		font-weight: 500;
+		font-style: italic;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "JetBrains Mono";
+		src: url("../fonts/Jetbrains\ Mono/JetBrainsMono-Medium.woff2") format("woff2");
+		font-weight: 500;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "JetBrains Mono";
+		src: url("../fonts/Jetbrains\ Mono/JetBrainsMono-Regular.woff2") format("woff2");
+		font-weight: 400;
+		font-style: normal;
+		font-display: swap;
+	}
 </style>
