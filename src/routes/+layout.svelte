@@ -1,10 +1,9 @@
 <script lang="ts">
-	import { onMount } from "svelte";
 	import "../global.scss";
 	import { defineCustomElements } from "@coreproject-moe/icons/loader";
 	let { children } = $props();
 
-	onMount(() => {
+	$effect.pre(() => {
 		defineCustomElements(globalThis.window);
 	});
 </script>

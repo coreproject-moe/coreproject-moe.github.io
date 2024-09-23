@@ -1,7 +1,6 @@
 <script lang="ts">
 	import IconDialog from "$lib/components/pages/icons/icon-dialog.svelte";
 	import { given_icon_name_return_html_string } from "$lib/functions/icons";
-	import { onMount } from "svelte";
 	import { bigram_search, linear_search } from "$lib/functions/search";
 	import { v4 as uuidv4 } from "uuid";
 	import { SvelteMap } from "svelte/reactivity";
@@ -12,13 +11,13 @@
 	let icons = $state<null | typeof icons_json>(null);
 	let dialog_elements = $state(new SvelteMap<string, HTMLDialogElement>());
 
-	onMount(async () => {
-		icons_json = (
-			await import("$lib/icons.json", {
-				assert: { type: "json" }
-			})
-		).default;
-		icons = icons_json;
+	$effect.pre(() => {
+		import("$lib/icons.json", {
+			assert: { type: "json" }
+		}).then((res) => {
+			icons_json = res.default;
+			icons = res.default;
+		});
 	});
 
 	function handle_input(event: Event) {
