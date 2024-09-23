@@ -15,8 +15,10 @@
 		import("$lib/icons.json", {
 			assert: { type: "json" }
 		}).then((res) => {
-			icons_json = res.default;
-			icons = res.default;
+			const data = res.default;
+
+			icons_json = structuredClone(data);
+			icons = structuredClone(data);
 		});
 	});
 
