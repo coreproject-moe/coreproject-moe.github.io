@@ -10,7 +10,7 @@
 		class="container sticky top-0 z-10 flex items-center justify-between bg-secondary/90 px-3 py-4 backdrop-blur md:h-16 md:px-3 md:py-0"
 	>
 		<div class="flex items-center gap-2">
-			<a href="/icons">
+			<a aria-label="Logo" href="/">
 				<coreproject-shape-logo class="flex size-7"> </coreproject-shape-logo>
 			</a>
 			<Coreicons class="hidden h-5 md:flex" />
@@ -23,7 +23,7 @@
 					class:text-accent={$page.url.pathname === item[1]}>{item[0]}</a
 				>
 			{/each}
-			<a href="https://github.com/coreproject-moe/monorepo">
+			<a aria-label="Github" href="https://github.com/coreproject-moe/monorepo">
 				<coreproject-logo-github class="flex size-5"> </coreproject-logo-github>
 			</a>
 		</nav>
