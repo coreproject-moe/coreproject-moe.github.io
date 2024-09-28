@@ -1,4 +1,9 @@
-<svg {...$$props} viewBox="0 0 480 680" fill="none" xmlns="http://www.w3.org/2000/svg">
+<script lang="ts">
+	import type { SVGAttributes } from "svelte/elements";
+	const { ...props }: SVGAttributes<SVGElement> = $props();
+</script>
+
+<svg {...props} viewBox="0 0 480 680" fill="none" xmlns="http://www.w3.org/2000/svg">
 	<g id="Group_2" class="animate-float delay-0">
 		<path id="Vector" d="M160 240L240 200L320 240L240 280L160 240Z" fill="#C505FF" />
 		<path id="Vector_2" d="M160 240L240 280V360L160 320V240Z" fill="#FD59FF" />
