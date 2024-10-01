@@ -36,10 +36,11 @@
 				<a
 					href="https://github.com/coreproject-moe"
 					target="_blank"
-					class="flex items-center gap-2 text-accent"
+					class="flex gap-2 text-accent"
 				>
 					<coreproject-logo-github class="size-4"
-					></coreproject-logo-github>github/coreproject-moe</a
+					></coreproject-logo-github>
+					<span class="ml-2">github/coreproject-moe</span></a
 				>
 				<p>Join us in shaping the future of anime, manga, and sound streaming.</p>
 			</div>
