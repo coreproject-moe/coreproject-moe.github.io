@@ -87,24 +87,24 @@
 		&:hover{
 			#Group_3 path {
 				&.fill-color-003 {
-					fill: #C505FF;
+					fill: #9D93FF;
 				}
 				&.fill-color-001 {
-					fill: #FD59FF;
+					fill: #7569E1;
 				}
 				&.fill-color-002 {
-					fill: #8E00CB;
+					fill: #352B8B;
 				}
 			}
 			path {
 				&.fill-color-003 {
-					fill: #C505FF;
+					fill: #9D93FF;
 				}
 				&.fill-color-001 {
-					fill: #FD59FF;
+					fill: #7569E1;
 				}
 				&.fill-color-002 {
-					fill: #8E00CB;
+					fill: #352B8B;
 				}
 			}
 		}

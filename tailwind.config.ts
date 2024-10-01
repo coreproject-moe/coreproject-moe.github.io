@@ -28,9 +28,9 @@ export default {
 				'color-001': "#DCD9F7",
 				'color-002': "#746DB9",
 				'color-003': "#A79FEC",
-				'color-004': "#C505FF",
-				'color-005': "#FD59FF",
-				'color-006': "#8E00CB",
+				'color-004': "#9D93FF",
+				'color-005': "#7569E1",
+				'color-006': "#352B8B",
 			}
 		}
 	},
