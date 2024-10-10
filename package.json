@@ -20,7 +20,7 @@
 		"@types/prismjs": "^1.26.4",
 		"@types/uuid": "^10.0.0",
 		"autoprefixer": "^10.4.20",
-		"daisyui": "^4.12.12",
+		"daisyui": "^4.12.13",
 		"highlight.js": "^11.10.0",
 		"postcss": "^8.4.47",
 		"prettier-plugin-svelte": "^3.2.7",
