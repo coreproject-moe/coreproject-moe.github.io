@@ -11,7 +11,7 @@
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
-		"@coreproject-moe/icons": "^0.0.63",
+		"@coreproject-moe/icons": "^0.0.65",
 		"@sveltejs/adapter-static": "^3.0.5",
 		"@sveltejs/kit": "^2.6.4",
 		"@sveltejs/vite-plugin-svelte": "^4.0.0-next.8",
