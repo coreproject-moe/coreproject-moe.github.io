@@ -76,7 +76,7 @@
 	</div>
 	<div class="grid grid-cols-5 gap-2 md:grid-cols-8">
 		{#if icons}
-			{#each icons.sort((a, b) => a["icon-name"].localeCompare(b["icon-name"])) as item}
+			{#each icons.toSorted((a, b) => a["icon-name"].localeCompare(b["icon-name"])) as item}
 				{@const icon = item["icon-name"]}
 				{@const variants = item.variants}
 				{@const icon_type = item.type}
