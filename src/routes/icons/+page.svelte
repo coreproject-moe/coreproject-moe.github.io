@@ -5,10 +5,10 @@
 	import { v4 as uuidv4 } from "uuid";
 	import { SvelteMap } from "svelte/reactivity";
 
-	let icons_json = $state<{ "icon-name": string; type: string; variants?: string[] }[] | null>(
-		null
-	);
-	let icons = $state<null | typeof icons_json>(null);
+	type Icon = { "icon-name": string; type: string; variants?: string[] };
+
+	let icons_json = $state<Icon[] | null>(null);
+	let icons = $state<Icon[] | null>(null);
 	let dialog_elements = $state(new SvelteMap<string, HTMLDialogElement>());
 
 	$effect.pre(() => {
@@ -20,6 +20,11 @@
 			icons_json = structuredClone(data);
 			icons = structuredClone(data);
 		});
+	});
+
+	$effect(() => {
+		console.log(icons_json);
+		console.log(icons);
 	});
 
 	function handle_input(event: Event) {
