@@ -8,7 +8,9 @@
 	});
 </script>
 
-{@render children()}
+<main class="flex h-dvh w-dvw bg-secondary">
+	{@render children()}
+</main>
 
 <!-- svelte-ignore css_unused_selector -->
 <style lang="scss" global>

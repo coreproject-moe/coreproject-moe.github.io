@@ -9,7 +9,7 @@
 	<title>Icons - CoreProject</title>
 </svelte:head>
 
-<div class="relative h-dvh w-full overflow-y-scroll bg-secondary">
+<div class="relative h-dvh w-full overflow-y-scroll">
 	<header
 		class="container sticky top-0 z-10 flex items-center justify-between bg-secondary/90 px-3 py-4 backdrop-blur md:h-16 md:px-3 md:py-0"
 	>
