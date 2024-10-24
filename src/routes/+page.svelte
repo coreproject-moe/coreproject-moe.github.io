@@ -7,7 +7,7 @@
 	<title>CoreProject - Imagine a new platform</title>
 </svelte:head>
 
-<section
+<div
 	class="mx-auto flex h-max w-full flex-col flex-col-reverse items-center justify-between gap-20 self-center p-5 md:max-w-5xl md:flex-row"
 >
 	<div class="flex h-full flex-col justify-between gap-20">
@@ -43,4 +43,4 @@
 		</div>
 	</div>
 	<CoreIsometric class="flex h-72 w-auto flex-shrink-0 overflow-visible md:h-[70vh]" />
-</section>
+</div>
