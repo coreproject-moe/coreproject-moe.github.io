@@ -22,11 +22,6 @@
 		});
 	});
 
-	$effect(() => {
-		console.log(icons_json);
-		console.log(icons);
-	});
-
 	function handle_input(event: Event) {
 		if (icons_json == null) return;
 
