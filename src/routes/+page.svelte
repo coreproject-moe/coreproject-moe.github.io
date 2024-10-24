@@ -21,13 +21,13 @@
 				<a
 					href="/icons"
 					class="btn btn-primary flex h-max min-h-max rounded-xl p-3 px-4 text-accent"
-					>CoreIcons <coreproject-shape-box class="w-5"></coreproject-shape-box></a
+					>CoreIcons <coreproject-shape-box class="size-4"></coreproject-shape-box></a
 				>
 				<a
 					href="https://github.com/coreproject-moe/monorepo"
 					target="_blank"
 					class="btn btn-neutral flex h-max min-h-max rounded-xl p-3 px-4 text-accent"
-					>Github <coreproject-logo-github class="w-5"></coreproject-logo-github></a
+					>Github <coreproject-logo-github class="size-4"></coreproject-logo-github></a
 				>
 			</div>
 		</div>
