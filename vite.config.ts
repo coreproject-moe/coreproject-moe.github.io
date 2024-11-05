@@ -13,7 +13,13 @@ export default defineConfig({
 	css: {
 		devSourcemap: true,
 		// Switch to lightning.css when tailwind supports it
-		transformer: "postcss"
+		transformer: "postcss",
+		// https://sass-lang.com/documentation/breaking-changes/legacy-js-api/#bundlers
+		preprocessorOptions: {
+			scss: {
+				api: "modern-compiler"
+			}
+		}
 	},
 	build: {
 		commonjsOptions: {
