@@ -5,7 +5,7 @@
 </script>
 
 <svelte:head>
-	<title>Icons - CoreProject</title>
+	<title>CoreIcons - Beautifully crafted icon lib by @coreproject-team.</title>
 </svelte:head>
 
 <div class="relative h-dvh w-full overflow-y-scroll">
