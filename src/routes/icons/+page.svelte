@@ -59,7 +59,7 @@
 		</p>
 	</div>
 	<div class="relative flex w-full items-center">
-		<coreproject-shape-search class="absolute left-4 size-5 stroke-2"></coreproject-shape-search>
+		<coreicons-shape-search class="absolute left-4 size-5 stroke-2"></coreicons-shape-search>
 		<input
 			oninput={(event) => {
 				event.preventDefault();
