@@ -1,12 +1,11 @@
 <script lang="ts">
-	import Coreicons from "$lib/components/icons/coreicons.svelte";
 	import { page } from "$app/stores";
 
 	let { children } = $props();
 </script>
 
 <svelte:head>
-	<title>Icons - CoreProject</title>
+	<title>CoreIcons - Beautifully crafted icon lib by @coreproject-team.</title>
 </svelte:head>
 
 <div class="relative h-dvh w-full overflow-y-scroll">
@@ -15,9 +14,8 @@
 	>
 		<div class="flex items-center gap-2">
 			<a aria-label="Logo" href="/">
-				<coreproject-shape-logo class="flex size-7"> </coreproject-shape-logo>
+				<coreicons-shape-logo class="flex size-7"> </coreicons-shape-logo>
 			</a>
-			<Coreicons class="hidden h-5 md:flex" />
 		</div>
 		<nav class="flex items-center gap-4 md:gap-5">
 			{#each Object.entries({ icons: "/icons", usage: "/icons/usage" }) as item}
@@ -28,7 +26,7 @@
 				>
 			{/each}
 			<a aria-label="Github" href="https://github.com/coreproject-moe/monorepo">
-				<coreproject-logo-github class="flex size-5"> </coreproject-logo-github>
+				<coreicons-logo-github class="flex size-5"> </coreicons-logo-github>
 			</a>
 		</nav>
 	</header>

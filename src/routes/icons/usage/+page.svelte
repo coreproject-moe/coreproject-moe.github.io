@@ -103,7 +103,7 @@ export default function RootLayout({
 		the <code>coreproject-[shape|logo]-[icon-name]</code>
 		component:
 	</p>
-	<Highlight language="html" code="<coreproject-shape-airplay></coreproject-shape-airplay>" />
+	<Highlight language="html" code="<coreicons-shape-airplay></coreicons-shape-airplay>" />
 	<h2>Variants</h2>
 	<p>
 		There are some icons with variants, you can use different variants of one icon with an <code
@@ -112,7 +112,7 @@ export default function RootLayout({
 	</p>
 	<Highlight
 		language="html"
-		code="<coreproject-shape-align variant='justify'></coreproject-shape-align>"
+		code="<coreicons-shape-align variant='justify'></coreicons-shape-align>"
 	/>
 	<h2>Properties / Attributes</h2>
 	<p>
@@ -124,7 +124,7 @@ export default function RootLayout({
 	</p>
 	<Highlight
 		language="html"
-		code="<coreproject-shape-airplay class='text-primary' width='200' height='200' _style='color: black'></coreproject-shape-airplay>"
+		code="<coreicons-shape-airplay class='text-primary' width='200' height='200' _style='color: black'></coreicons-shape-airplay>"
 	/>
 	<hr />
 	<h3>Issue Tracker</h3>
