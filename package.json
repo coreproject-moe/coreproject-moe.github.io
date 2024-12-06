@@ -34,7 +34,7 @@
 		"terser": "^5.36.0",
 		"typescript": "^5.7.2",
 		"uuid": "^11.0.3",
-		"vite": "^6.0.2"
+		"vite": "^6.0.3"
 	},
 	"type": "module"
 }
