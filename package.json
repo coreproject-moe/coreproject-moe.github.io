@@ -13,7 +13,7 @@
 	"devDependencies": {
 		"@coreproject-moe/icons": "^0.0.67",
 		"@sveltejs/adapter-static": "^3.0.6",
-		"@sveltejs/kit": "^2.12.1",
+		"@sveltejs/kit": "^2.12.2",
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
 		"@tailwindcss/forms": "^0.5.9",
 		"@tailwindcss/typography": "^0.5.15",
