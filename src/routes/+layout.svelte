@@ -1,5 +1,5 @@
 <script lang="ts">
-	import "../global.scss";
+	import "../global.css";
 	import { defineCustomElements } from "@coreproject-moe/icons/loader";
 	let { children } = $props();
 
@@ -8,7 +8,7 @@
 	});
 </script>
 
-<main class="flex h-dvh w-dvw bg-secondary">
+<main class="bg-secondary flex h-dvh w-dvw">
 	{@render children()}
 </main>
 

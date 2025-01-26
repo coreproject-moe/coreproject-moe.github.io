@@ -10,22 +10,11 @@ import type { Config } from "tailwindcss";
 import forms from "@tailwindcss/forms";
 import typography from "@tailwindcss/typography";
 import scrollbar from "tailwind-scrollbar";
-import daisyui from "daisyui";
 import plugin from "tailwindcss/plugin";
 
 export default {
 	content: ["./src/**/*.{html,js,svelte,ts}"],
-	theme: {
-		container: {
-			center: true
-		},
-		extend: {
-			fontFamily: {
-				sans: ["Kokoro", "sans-serif"],
-				mono: ["Jetbrains Mono"]
-			}
-		}
-	},
+
 	plugins: [
 		/**
 		 * '@tailwindcss/forms' is the forms plugin that provides a minimal styling
@@ -35,7 +24,6 @@ export default {
 		forms,
 		typography,
 		scrollbar,
-		daisyui,
 		plugin(({ matchUtilities, theme }) => {
 			matchUtilities(
 				{
@@ -51,22 +39,22 @@ export default {
 				}
 			);
 		})
-	],
-	daisyui: {
-		themes: [
-			{
-				kokoro: {
-					primary: "#7569E1",
-					secondary: "#03020C",
-					accent: "#FFF7F8",
-					neutral: "#1E2036",
-					"base-100": "#070519",
-					info: "#DCD9F7",
-					success: "#6FCF97",
-					warning: "#EDD68D",
-					error: "#EB5757"
-				}
-			}
-		]
-	}
+	]
+	// daisyui: {
+	// 	themes: [
+	// 		{
+	// 			kokoro: {
+	// 				primary: "#7569E1",
+	// 				secondary: "#03020C",
+	// 				accent: "#FFF7F8",
+	// 				neutral: "#1E2036",
+	// 				"base-100": "#070519",
+	// 				info: "#DCD9F7",
+	// 				success: "#6FCF97",
+	// 				warning: "#EDD68D",
+	// 				error: "#EB5757"
+	// 			}
+	// 		}
+	// 	]
+	// }
 } satisfies Config;
