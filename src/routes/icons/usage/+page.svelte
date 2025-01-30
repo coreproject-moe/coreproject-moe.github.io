@@ -64,10 +64,10 @@ export default function RootLayout({
 </script>
 
 <div
-	class="prose prose-invert px-5 py-10 prose-headings:mb-2 prose-p:my-2 prose-pre:my-4 prose-pre:rounded-xl prose-pre:bg-neutral/50 md:px-0 md:py-20"
+	class="prose prose-invert prose-headings:mb-2 prose-p:my-2 prose-pre:my-4 prose-pre:rounded-xl prose-pre:bg-neutral/50 px-5 py-10 md:px-0 md:py-20"
 >
 	<h1 class="text-warning">Usage</h1>
-	<p class="!mt-8 text-lg text-info">
+	<p class="text-info !mt-8 text-lg">
 		Coreicons is a completely open-source icon set crafted for web, iOS, Android, and desktop apps.
 		Coreicons was made for CoreProject, a streaming platform.
 	</p>
@@ -79,14 +79,15 @@ export default function RootLayout({
 	<Highlight language="bash" code="npm install @coreproject-moe/icons" />
 
 	Here is how to use it with different frameworks:
-	<div role="tablist" class="tabs tabs-lifted overflow-x-scroll pt-5">
+
+	<div role="tablist" class="tabs tabs-lift overflow-x-scroll pt-5 text-white">
 		{#each installation_mapping as item, idx}
 			<input
 				checked={idx === 0}
 				type="radio"
 				name="code_items"
 				role="tab"
-				class="tab !w-max bg-transparent !outline-none !ring-0 checked:!bg-neutral/50 checked:!bg-[url('')]"
+				class="tab checked:!bg-neutral/50 !w-max bg-transparent text-white !ring-0 !outline-none first:ml-0.5 checked:!bg-[url('')]"
 				aria-label={item.type}
 			/>
 			<div
