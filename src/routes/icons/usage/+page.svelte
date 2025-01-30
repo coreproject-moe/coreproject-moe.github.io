@@ -61,6 +61,8 @@ export default function RootLayout({
 			language: "html"
 		}
 	];
+
+	const properties = ["width,", "height,", "_style"];
 </script>
 
 <div
@@ -81,9 +83,10 @@ export default function RootLayout({
 	Here is how to use it with different frameworks:
 
 	<div role="tablist" class="tabs tabs-lift overflow-x-scroll pt-5 text-white">
-		{#each installation_mapping as item, idx}
+		{#each installation_mapping as item}
+			{@const is_first = item === installation_mapping.at(0)}
 			<input
-				checked={idx === 0}
+				checked={is_first}
 				type="radio"
 				name="code_items"
 				role="tab"
@@ -92,7 +95,7 @@ export default function RootLayout({
 			/>
 			<div
 				role="tabpanel"
-				class={`tab-content overflow-x-scroll [&>pre]:m-0 ${idx === 0 && "[&>pre]:rounded-tl-none"}`}
+				class={`tab-content overflow-x-scroll [&>pre]:m-0 first:[&>pre]:rounded-tl-none`}
 			>
 				<Highlight language={item.language} code={item.code.trim()} />
 			</div>
@@ -118,8 +121,8 @@ export default function RootLayout({
 	<h2>Properties / Attributes</h2>
 	<p>
 		You can provide
-		{#each ["width,", "height,", "_style"] as item}
-			<code>{item}</code>
+		{#each properties as property}
+			<code>{property}</code>
 		{/each}
 		that will be passed to the shadow svg. Here is an example:
 	</p>

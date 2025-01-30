@@ -1,6 +1,7 @@
 <script lang="ts">
-	import hljs from "highlight.js";
+	import "highlight.js/scss/github-dark.scss";
 
+	import hljs from "highlight.js";
 	const {
 		code,
 		language

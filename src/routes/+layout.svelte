@@ -12,7 +12,6 @@
 	{@render children()}
 </main>
 
-<!-- svelte-ignore css_unused_selector -->
 <style lang="scss" global>
 	@font-face {
 		font-family: "Kokoro";
