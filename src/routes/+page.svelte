@@ -8,7 +8,7 @@
 </svelte:head>
 
 <div
-	class="mx-auto flex h-max w-full flex-col flex-col-reverse items-center justify-between gap-20 self-center p-5 md:max-w-5xl md:flex-row"
+	class="mx-auto flex h-max w-full flex-col items-center justify-between gap-20 self-center p-5 md:max-w-5xl md:flex-row"
 >
 	<div class="flex h-full flex-col justify-between gap-20">
 		<coreicons-shape-logo class="hidden size-14 md:flex"></coreicons-shape-logo>
@@ -20,13 +20,13 @@
 			<div class="flex items-center gap-4">
 				<a
 					href="/icons"
-					class="btn btn-primary flex h-max min-h-max rounded-xl p-3 px-4 text-accent"
+					class="btn btn-primary text-accent flex h-max min-h-max rounded-xl p-3 px-4"
 					>CoreIcons <coreicons-shape-box class="size-4"></coreicons-shape-box></a
 				>
 				<a
 					href="https://github.com/coreproject-moe/monorepo"
 					target="_blank"
-					class="btn btn-neutral flex h-max min-h-max rounded-xl p-3 px-4 text-accent"
+					class="btn btn-neutral text-accent flex h-max min-h-max rounded-xl p-3 px-4"
 					>Github <coreicons-logo-github class="size-4"></coreicons-logo-github></a
 				>
 			</div>
@@ -35,7 +35,7 @@
 			<a
 				href="https://github.com/coreproject-moe"
 				target="_blank"
-				class="flex items-center gap-2 text-accent"
+				class="text-accent flex items-center gap-2"
 			>
 				<coreicons-logo-github class="size-4"></coreicons-logo-github>github/coreproject-moe</a
 			>
