@@ -45,17 +45,17 @@
 
 <div class="flex flex-col gap-10 px-5 py-10 md:px-0 md:py-20">
 	<div class="flex flex-col gap-5 md:px-10">
-		<div class="flex flex-col gap-2 text-center text-4xl font-black text-info md:text-5xl">
+		<div class="text-info flex flex-col gap-2 text-center text-4xl font-black md:text-5xl">
 			<span class="text-warning">CoreIcons.</span>
-      <span>Beautifully crafted.</span>
+			<span>Beautifully crafted.</span>
 		</div>
 		<p class="text-acccent/70 text-center text-sm md:text-lg">
 			Fully customizable SVG icons, open-sourced under the MIT license, and created by
 			<a
 				rel="nofollow"
-        target="_blank"
+				target="_blank"
 				href="https://github.com/coreproject-moe/coreproject-moe.github.io/graphs/contributors"
-        class="text-info font-bold"
+				class="text-info font-bold"
 			>
 				@coreproject-team
 			</a>.
@@ -69,7 +69,7 @@
 				handle_input(event);
 			}}
 			placeholder="Search icons..."
-			class="w-full rounded-xl border-none bg-neutral p-4 pl-12 font-semibold outline-none transition focus:ring-2 md:focus:ring-[0.2rem]"
+			class="bg-neutral w-full rounded-xl border-none p-4 pl-12 font-semibold transition outline-none focus:ring-2 md:focus:ring-[0.2rem]"
 		/>
 	</div>
 	<div class="grid grid-cols-5 gap-2 md:grid-cols-8">
@@ -83,7 +83,7 @@
 					{#each variants as it}
 						{@const uuid = uuidv4()}
 						<button
-							class="grid aspect-square cursor-pointer place-items-center rounded-xl transition-colors hover:bg-neutral/50 hover:text-accent"
+							class="hover:bg-neutral/50 hover:text-accent grid aspect-square cursor-pointer place-items-center rounded-xl transition-colors"
 							onclick={() => {
 								open_icon_model(uuid);
 							}}
@@ -100,7 +100,7 @@
 				{:else}
 					{@const uuid = uuidv4()}
 					<button
-						class="grid aspect-square cursor-pointer place-items-center rounded-xl transition-colors hover:bg-neutral/50 hover:text-accent"
+						class="hover:bg-neutral/50 hover:text-accent grid aspect-square cursor-pointer place-items-center rounded-xl transition-colors"
 						onclick={() => {
 							open_icon_model(uuid);
 						}}

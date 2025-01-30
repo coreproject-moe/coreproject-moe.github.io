@@ -28,9 +28,9 @@
 
 <dialog bind:this={dialog_element} class="modal backdrop:bg-transparent">
 	<div
-		class="modal-box absolute bottom-5 h-max overflow-x-hidden bg-secondary p-0 md:bottom-10 md:max-w-max"
+		class="modal-box bg-secondary absolute bottom-5 h-max overflow-x-hidden p-0 md:bottom-10 md:max-w-max"
 	>
-		<div class="flex w-full items-center bg-neutral/50 p-3">
+		<div class="bg-neutral/50 flex w-full items-center p-3">
 			<div class="flex flex-col gap-2 overflow-x-scroll">
 				<div class="flex items-center gap-2">
 					<div class="size-5">
@@ -41,7 +41,7 @@
 							variant
 						})}
 					</div>
-					<span class="text-lg font-semibold text-accent">
+					<span class="text-accent text-lg font-semibold">
 						{icon}
 
 						{#if variant}
@@ -65,7 +65,7 @@
 						class="btn btn-primary btn-xs ml-auto">Copy</button
 					>
 				</div>
-				<code class="w-full overflow-x-scroll rounded-xl bg-secondary/75 p-2 text-sm">
+				<code class="bg-secondary/75 w-full overflow-x-scroll rounded-xl p-2 text-sm">
 					<Highlight
 						code={given_icon_name_return_html_string({
 							icon_type: type,
