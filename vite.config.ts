@@ -1,11 +1,12 @@
 import { sveltekit } from "@sveltejs/kit/vite";
 import { defineConfig } from "vite";
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
 	optimizeDeps: {
 		// exclude: ['@coreproject-moe/icons'],
 	},
-	plugins: [sveltekit()],
+	plugins: [tailwindcss(), sveltekit()],
 	esbuild: {
 		target: "esnext",
 		legalComments: "external"
