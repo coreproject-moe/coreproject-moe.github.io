@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Highlight from "$lib/components/highlight.svelte";
-	import { given_icon_name_return_html_string } from "$lib/functions/icons";
+	import { given_icon_name_return_html_string } from "$lib/utils/icons";
 	import { SvelteMap } from "svelte/reactivity";
 
 	const {
