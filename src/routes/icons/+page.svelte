@@ -1,7 +1,7 @@
 <script lang="ts">
 	import IconDialog from "$lib/components/pages/icons/icon-dialog.svelte";
-	import { given_icon_name_return_html_string } from "$lib/functions/icons";
-	import { bigram_search, linear_search } from "$lib/functions/search";
+	import { given_icon_name_return_html_string } from "$lib/utils/icons";
+	import { bigram_search, linear_search } from "$lib/utils/search";
 	import { v4 as uuidv4 } from "uuid";
 	import { SvelteMap } from "svelte/reactivity";
 
