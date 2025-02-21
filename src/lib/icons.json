@@ -1,6 +1,14 @@
 [
-	{ "icon-name": "chevron", "type": "shape", "variants": ["up", "right", "down", "left"] },
-	{ "icon-name": "chevrons", "type": "shape", "variants": ["up", "right", "down", "left"] },
+	{
+		"icon-name": "chevron",
+		"type": "shape",
+		"variants": ["up", "right", "down", "left"]
+	},
+	{
+		"icon-name": "chevrons",
+		"type": "shape",
+		"variants": ["up", "right", "down", "left"]
+	},
 	{ "icon-name": "thumbs", "type": "shape", "variants": ["up", "down"] },
 	{ "icon-name": "trending", "type": "shape", "variants": ["up", "down"] },
 	{
@@ -20,27 +28,47 @@
 	{ "icon-name": "toggle", "type": "shape", "variants": ["off", "on"] },
 	{ "icon-name": "arrow", "type": "shape", "variants": ["up", "right", "down", "left"] },
 	{ "icon-name": "media-skip", "type": "shape", "variants": ["fast-forward", "rewind"] },
-	{ "icon-name": "align", "type": "shape", "variants": ["center", "justify", "left", "right"] },
+	{ "icon-name": "circle", "type": "shape", "variants": ["outline", "filled"] },
+	{
+		"icon-name": "align",
+		"type": "shape",
+		"variants": ["center", "justify", "left", "right"]
+	},
 	{ "icon-name": "bell", "type": "shape", "variants": ["on", "off"] },
 	{ "icon-name": "book", "type": "shape", "variants": ["open", "close"] },
 	{ "icon-name": "cloud", "type": "shape", "variants": ["on", "off"] },
 	{ "icon-name": "download", "type": "shape", "variants": ["arrow", "cloud"] },
-	{ "icon-name": "edit", "type": "shape", "variants": ["box", "pencil", "line-with-pencil"] },
+	{
+		"icon-name": "edit",
+		"type": "shape",
+		"variants": ["box", "pencil", "line-with-pencil"]
+	},
 	{ "icon-name": "eye", "type": "shape", "variants": ["open", "close"] },
-	{ "icon-name": "file", "type": "shape", "variants": ["normal", "minus", "plus", "text"] },
+	{
+		"icon-name": "file",
+		"type": "shape",
+		"variants": ["normal", "minus", "plus", "text"]
+	},
 	{ "icon-name": "folder", "type": "shape", "variants": ["normal", "minus", "plus"] },
 	{ "icon-name": "link", "type": "shape", "variants": ["tilted", "horizontal"] },
 	{ "icon-name": "plus", "type": "shape", "variants": ["no-border", "circle", "square"] },
 	{ "icon-name": "shield", "type": "shape", "variants": ["on", "off"] },
 	{ "icon-name": "trash", "type": "shape", "variants": ["with-lines", "without-lines"] },
 	{ "icon-name": "upload", "type": "shape", "variants": ["arrow", "cloud"] },
-	{ "icon-name": "user", "type": "shape", "variants": ["normal", "check", "minus", "plus", "x"] },
+	{
+		"icon-name": "user",
+		"type": "shape",
+		"variants": ["normal", "check", "minus", "plus", "x"]
+	},
 	{ "icon-name": "volume", "type": "shape", "variants": ["off", "half", "full", "mute"] },
-	{ "icon-name": "x", "type": "shape", "variants": ["no-border", "circle", "octagon", "square"] },
+	{
+		"icon-name": "x",
+		"type": "shape",
+		"variants": ["no-border", "circle", "octagon", "square"]
+	},
 	{ "icon-name": "zoom", "type": "shape", "variants": ["in", "out"] },
 	{ "icon-name": "settings", "type": "shape", "variants": ["outline", "filled"] },
 	{ "icon-name": "zap", "type": "shape", "variants": ["on", "off"] },
-	{ "icon-name": "circle", "type": "shape", "variants": ["outline", "filled"] },
 	{ "icon-name": "airplay", "type": "shape" },
 	{ "icon-name": "alert-triangle", "type": "shape" },
 	{ "icon-name": "at-sign", "type": "shape" },
@@ -83,7 +111,6 @@
 	{ "icon-name": "lock", "type": "shape" },
 	{ "icon-name": "log-in", "type": "shape" },
 	{ "icon-name": "log-out", "type": "shape" },
-	{ "icon-name": "logo", "type": "shape" },
 	{ "icon-name": "mail", "type": "shape" },
 	{ "icon-name": "map-pin", "type": "shape" },
 	{ "icon-name": "maximize", "type": "shape" },
