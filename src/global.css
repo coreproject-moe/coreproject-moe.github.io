@@ -50,3 +50,6 @@
 html {
 	@apply bg-black;
 }
+body{
+	font-family: 'Kokoro',sans-serif;
+}
