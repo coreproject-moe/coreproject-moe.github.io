@@ -30,7 +30,7 @@
 		"svelte": "^5.22.6",
 		"svelte-check": "^4.1.5",
 		"tailwind-scrollbar": "^4.0.1",
-		"tailwindcss": "^4.0.12",
+		"tailwindcss": "^4.0.13",
 		"terser": "^5.39.0",
 		"typescript": "^5.8.2",
 		"uuid": "^11.1.0",
