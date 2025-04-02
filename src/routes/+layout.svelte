@@ -17,6 +17,8 @@
 		flex: 1;
 		display: flex;
 		flex-direction: column;
-		padding-inline: 5rem;
+		max-width: 85rem;
+		margin: auto;
+		position: relative;
 	}
 </style>

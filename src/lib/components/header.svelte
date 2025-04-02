@@ -32,6 +32,8 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		max-width: var(--header-width);
+		margin-inline: auto;
 
 		position: fixed;
 		top: 0;

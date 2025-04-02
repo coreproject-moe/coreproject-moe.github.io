@@ -174,7 +174,7 @@
 			z-index: -1;
 			position: absolute;
 			right: 10rem;
-			top: 10rem;
+			top: -5rem;
 			width: 15rem;
 			height: auto;
 		}
@@ -183,7 +183,7 @@
 			z-index: -1;
 			position: absolute;
 			left: 0;
-			top: 15rem;
+			bottom: 0;
 			width: 25rem;
 			height: auto;
 		}
@@ -191,7 +191,7 @@
 		.dl-grids-vector {
 			z-index: -1;
 			position: absolute;
-			top: 12rem;
+			top: -2rem;
 			left: 25rem;
 			width: 10rem;
 			height: auto;
