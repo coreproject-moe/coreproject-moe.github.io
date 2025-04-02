@@ -14,6 +14,9 @@
 
 <style>
 	.container {
-		padding: 0.5rem;
+		display: flex;
+		flex-direction: column;
+		min-height: 100dvh;
+		padding-inline: 5rem;
 	}
 </style>

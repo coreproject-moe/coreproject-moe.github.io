@@ -1,9 +1,14 @@
 @import "./fonts.css";
+@import "./utilities.css";
+@import "./normalize.css";
 
 :root {
   /* fonts */
   --font-sans: 'Kokoro', sans-serif;
   --font-mono: "Jetbrains Mono";
+
+  /* measures */
+  --header-height: 3rem;
 
   /* theme */
   --color-primary: #7569E1;
