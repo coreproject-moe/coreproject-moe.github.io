@@ -54,7 +54,8 @@
 							await navigator.clipboard.writeText(
 								given_icon_name_return_html_string({
 									icon_type: type,
-									icon_name: icon
+									icon_name: icon,
+									variant
 								})
 							);
 							target.innerText = "Copied";
