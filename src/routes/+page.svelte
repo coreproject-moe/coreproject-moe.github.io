@@ -41,14 +41,14 @@
 		<h1>Build the Future with Core.</h1>
 		<p>Imagine a new platform where creativity thrives and limitless possibilities emerge.</p>
 		<div class="cta">
-			<button class="btn btn-primary">
+			<a href="https://github.com/coreproject-moe/monorepo" target="_blank" class="btn btn-primary">
 				<coreicons-logo-github></coreicons-logo-github>
 				Monorepo
-			</button>
-			<button class="btn">
+			</a>
+			<a href="/icons" class="btn">
 				<coreicons-shape-box></coreicons-shape-box>
 				Coreicons
-			</button>
+			</a>
 		</div>
 	</div>
 	<!-- vectors -->
