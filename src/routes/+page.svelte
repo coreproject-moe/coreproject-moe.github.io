@@ -9,9 +9,8 @@
 
 	onMount(async () => {
 		try {
-			const contributers_res = await fetch(
-				"https://api.github.com/repos/coreproject-moe/CoreProject/contributors?per_page=1&anon=true"
-			);
+			const base_api_url = "https://api.github.com/repos/coreproject-moe/CoreProject";
+			const contributers_res = await fetch(`${base_api_url}/contributors?per_page=1&anon=true`);
 			// github returns a link header for paginated results
 			const link_header = contributers_res.headers.get("Link");
 
@@ -22,9 +21,7 @@
 			}
 
 			// fetch stargazers count
-			const stargazers_res = await fetch(
-				"https://api.github.com/repos/coreproject-moe/CoreProject"
-			);
+			const stargazers_res = await fetch(base_api_url);
 			const stagazers_data = await stargazers_res.json();
 			stargazers_count = stagazers_data.stargazers_count;
 		} catch (err) {
