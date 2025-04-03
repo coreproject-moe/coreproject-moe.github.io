@@ -1,16 +1,13 @@
 <script lang="ts">
-	import IconDialog from "$lib/components/pages/icons/icon-dialog.svelte";
 	import { given_icon_name_return_html_string } from "$lib/utils/icons";
 	import { bigram_search, linear_search } from "$lib/utils/search";
-	import { v4 as uuidv4 } from "uuid";
-	import { SvelteMap } from "svelte/reactivity";
 	import { onMount } from "svelte";
+	import { toasts_store } from "$lib/components/ui/toast/toast.svelte";
 
 	type Icon = { "icon-name": string; type: string; variants?: string[] };
 
 	let icons_json = $state<Icon[] | null>(null);
 	let icons = $state<Icon[] | null>(null);
-	let dialog_elements = $state(new SvelteMap<string, HTMLDialogElement>());
 	let search_input_el = $state<HTMLInputElement | null>(null);
 
 	$effect.pre(() => {
@@ -41,11 +38,6 @@
 		} else if (value.length > 1) {
 			icons = bigram_search(icons_json, value);
 		}
-	}
-
-	function open_icon_model(id: string) {
-		const el = dialog_elements.get(id);
-		el!.showModal();
 	}
 </script>
 
@@ -81,11 +73,16 @@
 
 			{#if variants}
 				{#each variants as it}
-					{@const uuid = uuidv4()}
 					<button
-						class="hover:bg-neutral/50 hover:text-accent grid aspect-square cursor-pointer place-items-center rounded-xl transition-colors"
 						onclick={() => {
-							open_icon_model(uuid);
+							toasts_store.send(
+								"Icon copied!",
+								given_icon_name_return_html_string({
+									icon_name: icon,
+									icon_type: icon_type,
+									variant: it
+								})
+							);
 						}}
 					>
 						{@html given_icon_name_return_html_string({
@@ -95,14 +92,17 @@
 							variant: it
 						})}
 					</button>
-					<IconDialog {dialog_elements} type={icon_type} {uuid} {icon} variant={it} />
 				{/each}
 			{:else}
-				{@const uuid = uuidv4()}
 				<button
-					class="hover:bg-neutral/50 hover:text-accent grid aspect-square cursor-pointer place-items-center rounded-xl transition-colors"
 					onclick={() => {
-						open_icon_model(uuid);
+						toasts_store.send(
+							"Icon copied!",
+							given_icon_name_return_html_string({
+								icon_name: icon,
+								icon_type: icon_type
+							})
+						);
 					}}
 				>
 					{@html given_icon_name_return_html_string({
@@ -111,7 +111,6 @@
 						classname: "icon"
 					})}
 				</button>
-				<IconDialog {dialog_elements} type={icon_type} {uuid} {icon} />
 			{/if}
 		{/each}
 	{/if}
