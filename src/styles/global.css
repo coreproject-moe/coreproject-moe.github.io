@@ -1,0 +1,32 @@
+@import "./fonts.css";
+@import "./utilities.css";
+@import "./normalize.css";
+
+:root {
+  /* fonts */
+  --font-sans: 'Kokoro', sans-serif;
+  --font-mono: "Jetbrains Mono";
+
+  /* measures */
+  --header-height: 4rem;
+  --header-width: 85rem;
+
+  /* theme */
+  --color-primary: #7569E1;
+  --color-secondary: #070519;
+  --color-accent: #FFF7F8;
+  --color-neutral: #1E2036;
+  --color-base-100: #03020C;
+  --color-info: #DCD9F7;
+  --color-success: #6FCF97;
+  --color-warning: #EDD68D;
+  --color-error: #EB5757;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-base-100);
+  color: var(--color-accent);
+  display: flex;
+  min-height: 100dvh;
+}

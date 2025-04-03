@@ -1,15 +1,16 @@
 <script lang="ts">
-	import IconDialog from "$lib/components/pages/icons/icon-dialog.svelte";
-	import { given_icon_name_return_html_string } from "$lib/functions/icons";
-	import { bigram_search, linear_search } from "$lib/functions/search";
-	import { v4 as uuidv4 } from "uuid";
-	import { SvelteMap } from "svelte/reactivity";
+	import { given_icon_name_return_html_string } from "$lib/utils/icons";
+	import { bigram_search, linear_search } from "$lib/utils/search";
+	import { onMount } from "svelte";
+	import { toasts_store } from "$lib/components/ui/toast/toast.svelte";
+	import { browser } from "$app/environment";
+	import Header from "$lib/components/header.svelte";
 
 	type Icon = { "icon-name": string; type: string; variants?: string[] };
 
 	let icons_json = $state<Icon[] | null>(null);
 	let icons = $state<Icon[] | null>(null);
-	let dialog_elements = $state(new SvelteMap<string, HTMLDialogElement>());
+	let search_input_el = $state<HTMLInputElement | null>(null);
 
 	$effect.pre(() => {
 		import("$lib/icons.json", {
@@ -20,6 +21,10 @@
 			icons_json = structuredClone(data);
 			icons = structuredClone(data);
 		});
+	});
+
+	onMount(() => {
+		search_input_el?.focus();
 	});
 
 	function handle_input(event: Event) {
@@ -37,42 +42,53 @@
 		}
 	}
 
-	function open_icon_model(id: string) {
-		const el = dialog_elements.get(id);
-		el!.showModal();
+	async function copy_icon(icon: string) {
+		if (!browser) return;
+		await navigator.clipboard.writeText(icon);
+		toasts_store.send("Icon copied!", icon);
 	}
 </script>
 
-<div class="flex flex-col gap-10 px-5 py-10 md:px-0 md:py-20">
-	<div class="flex flex-col gap-5 md:px-10">
-		<div class="text-info flex flex-col gap-2 text-center text-4xl font-black md:text-5xl">
-			<span class="text-warning">CoreIcons.</span>
+<svelte:head>
+	<title>CoreIcons - Beautifully crafted icon lib.</title>
+</svelte:head>
+
+<Header />
+<div class="icons-container">
+	<div class="links">
+		<a href="/">
+			<coreicons-shape-chevron variant="left"></coreicons-shape-chevron>
+			Home
+		</a>
+		<a href="https://github.com/coreproject-moe/monorepo/tree/main/packages/icons" target="_blank">
+			Usage
+			<coreicons-shape-chevron variant="right"></coreicons-shape-chevron>
+		</a>
+	</div>
+	<div class="head-container">
+		<div class="main-text">
+			<span class="coreicons">CoreIcons.</span>
 			<span>Beautifully crafted.</span>
 		</div>
-		<p class="text-acccent/70 text-center text-sm md:text-lg">
+		<p class="sub-text">
 			Fully customizable SVG icons, open-sourced under the MIT license, and created by
-			<a
-				rel="nofollow"
-				target="_blank"
-				href="https://github.com/coreproject-moe/coreproject-moe.github.io/graphs/contributors"
-				class="text-info font-bold"
-			>
+			<a rel="nofollow" target="_blank" href="https://github.com/coreproject-moe">
 				@coreproject-team
 			</a>.
 		</p>
 	</div>
-	<div class="relative flex w-full items-center">
-		<coreicons-shape-search class="absolute left-4 size-5 stroke-2"></coreicons-shape-search>
+	<div class="search-container">
+		<coreicons-shape-search class="icon"></coreicons-shape-search>
 		<input
 			oninput={(event) => {
 				event.preventDefault();
 				handle_input(event);
 			}}
 			placeholder="Search icons..."
-			class="bg-neutral w-full rounded-xl border-none p-4 pl-12 font-semibold transition outline-none focus:ring-2 md:focus:ring-[0.2rem]"
+			bind:this={search_input_el}
 		/>
 	</div>
-	<div class="grid grid-cols-5 gap-2 md:grid-cols-8">
+	<div class="icons-grid-container">
 		{#if icons}
 			{#each icons.toSorted((a, b) => a["icon-name"].localeCompare(b["icon-name"])) as item}
 				{@const icon = item["icon-name"]}
@@ -81,39 +97,166 @@
 
 				{#if variants}
 					{#each variants as it}
-						{@const uuid = uuidv4()}
-						<button
-							class="hover:bg-neutral/50 hover:text-accent grid aspect-square cursor-pointer place-items-center rounded-xl transition-colors"
-							onclick={() => {
-								open_icon_model(uuid);
-							}}
-						>
-							{@html given_icon_name_return_html_string({
-								icon_name: icon,
-								icon_type: icon_type,
-								classname: "size-5",
-								variant: it
-							})}
-						</button>
-						<IconDialog {dialog_elements} type={icon_type} {uuid} {icon} variant={it} />
-					{/each}
-				{:else}
-					{@const uuid = uuidv4()}
-					<button
-						class="hover:bg-neutral/50 hover:text-accent grid aspect-square cursor-pointer place-items-center rounded-xl transition-colors"
-						onclick={() => {
-							open_icon_model(uuid);
-						}}
-					>
-						{@html given_icon_name_return_html_string({
+						{@const _icon = given_icon_name_return_html_string({
 							icon_name: icon,
 							icon_type: icon_type,
-							classname: "size-5"
+							classname: "icon",
+							variant: it
 						})}
+
+						<button onclick={() => copy_icon(_icon)}>
+							{@html _icon}
+						</button>
+					{/each}
+				{:else}
+					{@const _icon = given_icon_name_return_html_string({
+						icon_name: icon,
+						icon_type: icon_type,
+						classname: "icon"
+					})}
+
+					<button onclick={() => copy_icon(_icon)}>
+						{@html _icon}
 					</button>
-					<IconDialog {dialog_elements} type={icon_type} {uuid} {icon} />
 				{/if}
 			{/each}
 		{/if}
 	</div>
+	<footer>
+		<span>
+			Made with ❤️ by
+			<a href="https://github.com/coreproject-moe" target="_blank" rel="noopener"
+				>CoreProject Team</a
+			>.
+		</span>
+		<span>Under the MIT license.</span>
+	</footer>
 </div>
+
+<style>
+	.icons-container {
+		margin-top: var(--header-height);
+		max-width: 35rem;
+		margin-inline: auto;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+
+		.links {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
+			a {
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				color: var(--color-info);
+			}
+		}
+
+		.head-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			gap: 0.5rem;
+
+			.main-text {
+				display: flex;
+				flex-direction: column;
+				gap: 0.5rem;
+				font-size: 3rem;
+				font-weight: bold;
+				line-height: 1;
+				color: var(--color-info);
+
+				.coreicons {
+					color: var(--color-accent);
+				}
+			}
+
+			.sub-text {
+				color: color-mix(in srgb, var(--color-info) 75%, transparent);
+
+				a {
+					color: var(--color-info);
+					font-weight: 600;
+				}
+			}
+		}
+
+		.search-container {
+			display: flex;
+			align-items: center;
+			position: relative;
+			width: 100%;
+			height: 3rem;
+			border: 2px solid var(--color-neutral);
+			border-radius: 0.75rem;
+			transition: 0.3s ease-out;
+
+			&:focus-within {
+				border-color: var(--color-info);
+
+				.icon {
+					opacity: 100%;
+				}
+			}
+
+			.icon {
+				position: absolute;
+				left: 1rem;
+				pointer-events: none;
+				color: var(--color-info);
+				opacity: 75%;
+				transition: 0.3s ease-out;
+			}
+
+			input {
+				padding-left: 2.5rem;
+				background-color: transparent;
+				outline: none;
+				flex: 1;
+			}
+		}
+
+		.icons-grid-container {
+			display: grid;
+			grid-template-columns: repeat(8, 1fr);
+			gap: 0.5rem;
+
+			button {
+				aspect-ratio: 1/1;
+				border-radius: 0.75rem;
+				display: grid;
+				place-items: center;
+				transition: background-color 0.5s ease-out 0.3s;
+
+				&:hover {
+					background-color: color-mix(in srgb, var(--color-neutral) 50%, transparent);
+					transition: background-color 0.1s ease-out;
+				}
+
+				:global(.icon) {
+					color: var(--color-info);
+					width: 1.25rem;
+					height: 1.25rem;
+				}
+			}
+		}
+
+		footer {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			font-size: 0.75rem;
+			color: color-mix(in srgb, var(--color-info) 75%, transparent);
+
+			a {
+				color: var(--color-info);
+				font-weight: 600;
+			}
+		}
+	}
+</style>
