@@ -14,11 +14,7 @@
 		<span>Products <coreicons-shape-chevron variant="down"></coreicons-shape-chevron></span>
 		<span class="disabled">Blog</span>
 	</nav>
-	<a
-		href="/"
-		style="position: absolute; left: 50%; transform: translateX(-50%);"
-		class="coreproject-icon"
-	>
+	<a href="/" class="coreproject-icon">
 		<Coreproject style="width: 8rem;" />
 	</a>
 	<nav>
@@ -52,6 +48,9 @@
 
 		.coreproject-icon {
 			display: none;
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
 
 			@media (width >= 40rem) {
 				display: block;
