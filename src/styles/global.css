@@ -27,7 +27,6 @@ body {
   font-family: var(--font-sans);
   background-color: var(--color-base-100);
   color: var(--color-accent);
-  padding: 1rem;
   display: flex;
   min-height: 100dvh;
 }

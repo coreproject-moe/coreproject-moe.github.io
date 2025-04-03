@@ -14,7 +14,11 @@
 		<span>Products <coreicons-shape-chevron variant="down"></coreicons-shape-chevron></span>
 		<span class="disabled">Blog</span>
 	</nav>
-	<a href="/" style="position: absolute; left: 50%; transform: translateX(-50%);">
+	<a
+		href="/"
+		style="position: absolute; left: 50%; transform: translateX(-50%);"
+		class="coreproject-icon"
+	>
 		<Coreproject style="width: 8rem;" />
 	</a>
 	<nav>
@@ -31,17 +35,28 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		max-width: var(--header-width);
 		margin-inline: auto;
-
 		position: fixed;
 		z-index: 999;
 		top: 0;
 		inset-inline: 0;
-		padding-inline: 5rem;
+		padding-inline: 2rem;
 		height: var(--header-height);
 		backdrop-filter: blur(0.5rem);
 		background-color: color-mix(in srgb, var(--color-base-100) 90%, transparent);
+
+		@media (width >= 40rem) {
+			max-width: var(--header-width);
+			padding-inline: 5rem;
+		}
+
+		.coreproject-icon {
+			display: none;
+
+			@media (width >= 40rem) {
+				display: block;
+			}
+		}
 
 		nav {
 			display: flex;

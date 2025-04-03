@@ -1,27 +1,3 @@
-<!-- triangle -->
-<svg
-	class="dl-triangle-vector"
-	width="203"
-	height="203"
-	viewBox="0 0 203 203"
-	fill="none"
-	xmlns="http://www.w3.org/2000/svg"
->
-	<path d="M1 202V2L201 202H1Z" stroke="url(#paint0_linear_1_3)" />
-	<defs>
-		<linearGradient
-			id="paint0_linear_1_3"
-			x1="1"
-			y1="202"
-			x2="151"
-			y2="202"
-			gradientUnits="userSpaceOnUse"
-		>
-			<stop stop-color="#EDD68D" />
-			<stop offset="1" stop-color="#947D32" stop-opacity="0" />
-		</linearGradient>
-	</defs>
-</svg>
 <!-- semicircle -->
 <svg
 	class="dl-semicircle-vector"
@@ -112,27 +88,75 @@
 	.dl-triangle-vector {
 		z-index: -1;
 		position: absolute;
-		right: 10rem;
+		right: -12rem;
 		top: -5rem;
 		width: 15rem;
 		height: auto;
+
+		@media (width >= 40rem) {
+			right: -10rem;
+		}
+
+		@media (width >= 48rem) {
+			right: -5rem;
+		}
+
+		@media (width >= 64rem) {
+			right: 0rem;
+		}
+
+		@media (width >= 80rem) {
+			right: 10rem;
+		}
 	}
 
 	.dl-semicircle-vector {
 		z-index: -1;
 		position: absolute;
-		left: 0;
+		left: -24rem;
 		bottom: 0;
 		width: 25rem;
 		height: auto;
+
+		@media (width >= 40rem) {
+			left: -20rem;
+		}
+
+		@media (width >= 48rem) {
+			left: -15rem;
+		}
+
+		@media (width >= 64rem) {
+			left: -8rem;
+		}
+
+		@media (width >= 80rem) {
+			left: 0;
+		}
 	}
 
 	.dl-grids-vector {
 		z-index: -1;
 		position: absolute;
 		top: -2rem;
-		left: 25rem;
+		left: 2rem;
 		width: 10rem;
 		height: auto;
+
+		@media (width >= 40rem) {
+			left: 10rem;
+		}
+
+		@media (width >= 48rem) {
+			left: 15rem;
+		}
+
+		@media (width >= 64rem) {
+			left: 25rem;
+		}
+
+		@media (width >= 80rem) {
+			left: 25rem;
+		}
 	}
 </style>
