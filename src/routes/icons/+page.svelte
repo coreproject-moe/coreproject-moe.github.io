@@ -54,7 +54,7 @@
 </svelte:head>
 
 <Header />
-<div class="icons-container">
+<main>
 	<div class="links">
 		<a href="/">
 			<coreicons-shape-chevron variant="left"></coreicons-shape-chevron>
@@ -131,16 +131,17 @@
 		</span>
 		<span>Under the MIT license.</span>
 	</footer>
-</div>
+</main>
 
 <style>
-	.icons-container {
+	main {
 		margin-top: var(--header-height);
 		max-width: 35rem;
 		margin-inline: auto;
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
+		padding: 1rem;
 
 		.links {
 			display: flex;
@@ -223,8 +224,12 @@
 
 		.icons-grid-container {
 			display: grid;
-			grid-template-columns: repeat(8, 1fr);
+			grid-template-columns: repeat(6, 1fr);
 			gap: 0.5rem;
+
+			@media (width >= 40rem) {
+				grid-template-columns: repeat(8, 1fr);
+			}
 
 			button {
 				aspect-ratio: 1/1;

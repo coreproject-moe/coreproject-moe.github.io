@@ -36,7 +36,7 @@
 		z-index: 999;
 		top: 0;
 		inset-inline: 0;
-		padding-inline: 2rem;
+		padding-inline: 1rem;
 		height: var(--header-height);
 		backdrop-filter: blur(0.5rem);
 		background-color: color-mix(in srgb, var(--color-base-100) 90%, transparent);

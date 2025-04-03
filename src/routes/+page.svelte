@@ -135,7 +135,7 @@
 		flex: 1;
 		display: flex;
 		overflow: hidden;
-		padding-inline: 1rem;
+		padding: 1rem;
 	}
 
 	.hero-container {
