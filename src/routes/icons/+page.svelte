@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { given_icon_name_return_html_string } from "$lib/utils/icons";
 	import { bigram_search, linear_search } from "$lib/utils/search";
-	import { onMount } from "svelte";
 	import { toasts_store } from "$lib/components/ui/toast/toast.svelte";
 	import { browser } from "$app/environment";
 	import Header from "$lib/components/header.svelte";
@@ -10,7 +9,6 @@
 
 	let icons_json = $state<Icon[] | null>(null);
 	let icons = $state<Icon[] | null>(null);
-	let search_input_el = $state<HTMLInputElement | null>(null);
 
 	$effect.pre(() => {
 		import("$lib/icons.json", {
@@ -21,10 +19,6 @@
 			icons_json = structuredClone(data);
 			icons = structuredClone(data);
 		});
-	});
-
-	onMount(() => {
-		search_input_el?.focus();
 	});
 
 	function handle_input(event: Event) {
@@ -80,12 +74,11 @@
 	<div class="search-container">
 		<coreicons-shape-search class="icon"></coreicons-shape-search>
 		<input
+			placeholder="Search icons..."
 			oninput={(event) => {
 				event.preventDefault();
 				handle_input(event);
 			}}
-			placeholder="Search icons..."
-			bind:this={search_input_el}
 		/>
 	</div>
 	<div class="icons-grid-container">
