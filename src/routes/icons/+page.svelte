@@ -4,12 +4,14 @@
 	import { bigram_search, linear_search } from "$lib/utils/search";
 	import { v4 as uuidv4 } from "uuid";
 	import { SvelteMap } from "svelte/reactivity";
+	import { onMount } from "svelte";
 
 	type Icon = { "icon-name": string; type: string; variants?: string[] };
 
 	let icons_json = $state<Icon[] | null>(null);
 	let icons = $state<Icon[] | null>(null);
 	let dialog_elements = $state(new SvelteMap<string, HTMLDialogElement>());
+	let search_input_el = $state<HTMLInputElement | null>(null);
 
 	$effect.pre(() => {
 		import("$lib/icons.json", {
@@ -20,6 +22,10 @@
 			icons_json = structuredClone(data);
 			icons = structuredClone(data);
 		});
+	});
+
+	onMount(() => {
+		search_input_el?.focus();
 	});
 
 	function handle_input(event: Event) {
@@ -63,6 +69,7 @@
 			handle_input(event);
 		}}
 		placeholder="Search icons..."
+		bind:this={search_input_el}
 	/>
 </div>
 <div class="icons-container">
@@ -192,13 +199,13 @@
 
 		button {
 			aspect-ratio: 1/1;
-			border-radius: 0.5rem;
+			border-radius: 0.75rem;
 			display: grid;
 			place-items: center;
-			transition: background-color 0.5s ease-out 0.1s;
+			transition: background-color 0.5s ease-out 0.3s;
 
 			&:hover {
-				background-color: var(--color-neutral);
+				background-color: color-mix(in srgb, var(--color-neutral) 50%, transparent);
 				transition: background-color 0.1s ease-out;
 			}
 
