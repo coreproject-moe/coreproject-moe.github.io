@@ -4,6 +4,7 @@
 	import { onMount } from "svelte";
 	import { toasts_store } from "$lib/components/ui/toast/toast.svelte";
 	import { browser } from "$app/environment";
+	import Header from "$lib/components/header.svelte";
 
 	type Icon = { "icon-name": string; type: string; variants?: string[] };
 
@@ -48,174 +49,214 @@
 	}
 </script>
 
-<div class="head-container">
-	<div class="main-text">
-		<span class="coreicons">CoreIcons.</span>
-		<span>Beautifully crafted.</span>
-	</div>
-	<p class="sub-text">
-		Fully customizable SVG icons, open-sourced under the MIT license, and created by
-		<a rel="nofollow" target="_blank" href="https://github.com/coreproject-moe">
-			@coreproject-team
-		</a>.
-	</p>
-</div>
-<div class="search-container">
-	<coreicons-shape-search class="icon"></coreicons-shape-search>
-	<input
-		oninput={(event) => {
-			event.preventDefault();
-			handle_input(event);
-		}}
-		placeholder="Search icons..."
-		bind:this={search_input_el}
-	/>
-</div>
-<div class="icons-container">
-	{#if icons}
-		{#each icons.toSorted((a, b) => a["icon-name"].localeCompare(b["icon-name"])) as item}
-			{@const icon = item["icon-name"]}
-			{@const variants = item.variants}
-			{@const icon_type = item.type}
+<svelte:head>
+	<title>CoreIcons - Beautifully crafted icon lib.</title>
+</svelte:head>
 
-			{#if variants}
-				{#each variants as it}
+<Header />
+<div class="icons-container">
+	<div class="links">
+		<a href="/">
+			<coreicons-shape-chevron variant="left"></coreicons-shape-chevron>
+			Home
+		</a>
+		<a href="https://github.com/coreproject-moe/monorepo/tree/main/packages/icons" target="_blank">
+			Usage
+			<coreicons-shape-chevron variant="right"></coreicons-shape-chevron>
+		</a>
+	</div>
+	<div class="head-container">
+		<div class="main-text">
+			<span class="coreicons">CoreIcons.</span>
+			<span>Beautifully crafted.</span>
+		</div>
+		<p class="sub-text">
+			Fully customizable SVG icons, open-sourced under the MIT license, and created by
+			<a rel="nofollow" target="_blank" href="https://github.com/coreproject-moe">
+				@coreproject-team
+			</a>.
+		</p>
+	</div>
+	<div class="search-container">
+		<coreicons-shape-search class="icon"></coreicons-shape-search>
+		<input
+			oninput={(event) => {
+				event.preventDefault();
+				handle_input(event);
+			}}
+			placeholder="Search icons..."
+			bind:this={search_input_el}
+		/>
+	</div>
+	<div class="icons-grid-container">
+		{#if icons}
+			{#each icons.toSorted((a, b) => a["icon-name"].localeCompare(b["icon-name"])) as item}
+				{@const icon = item["icon-name"]}
+				{@const variants = item.variants}
+				{@const icon_type = item.type}
+
+				{#if variants}
+					{#each variants as it}
+						{@const _icon = given_icon_name_return_html_string({
+							icon_name: icon,
+							icon_type: icon_type,
+							classname: "icon",
+							variant: it
+						})}
+
+						<button onclick={() => copy_icon(_icon)}>
+							{@html _icon}
+						</button>
+					{/each}
+				{:else}
 					{@const _icon = given_icon_name_return_html_string({
 						icon_name: icon,
 						icon_type: icon_type,
-						classname: "icon",
-						variant: it
+						classname: "icon"
 					})}
 
 					<button onclick={() => copy_icon(_icon)}>
 						{@html _icon}
 					</button>
-				{/each}
-			{:else}
-				{@const _icon = given_icon_name_return_html_string({
-					icon_name: icon,
-					icon_type: icon_type,
-					classname: "icon"
-				})}
-
-				<button onclick={() => copy_icon(_icon)}>
-					{@html _icon}
-				</button>
-			{/if}
-		{/each}
-	{/if}
+				{/if}
+			{/each}
+		{/if}
+	</div>
+	<footer>
+		<span>
+			Made with ❤️ by
+			<a href="https://github.com/coreproject-moe" target="_blank" rel="noopener"
+				>CoreProject Team</a
+			>.
+		</span>
+		<span>Under the MIT license.</span>
+	</footer>
 </div>
-<footer>
-	<span>
-		Made with ❤️ by
-		<a href="https://github.com/coreproject-moe" target="_blank" rel="noopener">CoreProject Team</a
-		>.
-	</span>
-	<span>Under the MIT license.</span>
-</footer>
 
 <style>
-	.head-container {
+	.icons-container {
+		margin-top: var(--header-height);
+		max-width: 35rem;
+		margin-inline: auto;
 		display: flex;
 		flex-direction: column;
-		align-items: center;
-		text-align: center;
-		gap: 0.5rem;
+		gap: 1rem;
 
-		.main-text {
+		.links {
 			display: flex;
-			flex-direction: column;
-			gap: 0.5rem;
-			font-size: 3rem;
-			font-weight: bold;
-			line-height: 1;
-			color: var(--color-info);
+			align-items: center;
+			justify-content: space-between;
 
-			.coreicons {
-				color: var(--color-accent);
+			a {
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				color: var(--color-info);
 			}
 		}
 
-		.sub-text {
+		.head-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			gap: 0.5rem;
+
+			.main-text {
+				display: flex;
+				flex-direction: column;
+				gap: 0.5rem;
+				font-size: 3rem;
+				font-weight: bold;
+				line-height: 1;
+				color: var(--color-info);
+
+				.coreicons {
+					color: var(--color-accent);
+				}
+			}
+
+			.sub-text {
+				color: color-mix(in srgb, var(--color-info) 75%, transparent);
+
+				a {
+					color: var(--color-info);
+					font-weight: 600;
+				}
+			}
+		}
+
+		.search-container {
+			display: flex;
+			align-items: center;
+			position: relative;
+			width: 100%;
+			height: 3rem;
+			border: 2px solid var(--color-neutral);
+			border-radius: 0.75rem;
+			transition: 0.3s ease-out;
+
+			&:focus-within {
+				border-color: var(--color-info);
+
+				.icon {
+					opacity: 100%;
+				}
+			}
+
+			.icon {
+				position: absolute;
+				left: 1rem;
+				pointer-events: none;
+				color: var(--color-info);
+				opacity: 75%;
+				transition: 0.3s ease-out;
+			}
+
+			input {
+				padding-left: 2.5rem;
+				background-color: transparent;
+				outline: none;
+				flex: 1;
+			}
+		}
+
+		.icons-grid-container {
+			display: grid;
+			grid-template-columns: repeat(8, 1fr);
+			gap: 0.5rem;
+
+			button {
+				aspect-ratio: 1/1;
+				border-radius: 0.75rem;
+				display: grid;
+				place-items: center;
+				transition: background-color 0.5s ease-out 0.3s;
+
+				&:hover {
+					background-color: color-mix(in srgb, var(--color-neutral) 50%, transparent);
+					transition: background-color 0.1s ease-out;
+				}
+
+				:global(.icon) {
+					color: var(--color-info);
+					width: 1.25rem;
+					height: 1.25rem;
+				}
+			}
+		}
+
+		footer {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			font-size: 0.75rem;
 			color: color-mix(in srgb, var(--color-info) 75%, transparent);
 
 			a {
 				color: var(--color-info);
 				font-weight: 600;
 			}
-		}
-	}
-
-	.search-container {
-		display: flex;
-		align-items: center;
-		position: relative;
-		width: 100%;
-		height: 3rem;
-		border: 2px solid var(--color-neutral);
-		border-radius: 0.75rem;
-		transition: 0.3s ease-out;
-
-		&:focus-within {
-			border-color: var(--color-info);
-
-			.icon {
-				opacity: 100%;
-			}
-		}
-
-		.icon {
-			position: absolute;
-			left: 1rem;
-			pointer-events: none;
-			color: var(--color-info);
-			opacity: 75%;
-			transition: 0.3s ease-out;
-		}
-
-		input {
-			padding-left: 2.5rem;
-			background-color: transparent;
-			outline: none;
-			flex: 1;
-		}
-	}
-
-	.icons-container {
-		display: grid;
-		grid-template-columns: repeat(8, 1fr);
-		gap: 0.5rem;
-
-		button {
-			aspect-ratio: 1/1;
-			border-radius: 0.75rem;
-			display: grid;
-			place-items: center;
-			transition: background-color 0.5s ease-out 0.3s;
-
-			&:hover {
-				background-color: color-mix(in srgb, var(--color-neutral) 50%, transparent);
-				transition: background-color 0.1s ease-out;
-			}
-
-			:global(.icon) {
-				color: var(--color-info);
-				width: 1.25rem;
-				height: 1.25rem;
-			}
-		}
-	}
-
-	footer {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		font-size: 0.75rem;
-		color: color-mix(in srgb, var(--color-info) 75%, transparent);
-
-		a {
-			color: var(--color-info);
-			font-weight: 600;
 		}
 	}
 </style>
