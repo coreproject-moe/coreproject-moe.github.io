@@ -3,6 +3,7 @@
 	import { bigram_search, linear_search } from "$lib/utils/search";
 	import { onMount } from "svelte";
 	import { toasts_store } from "$lib/components/ui/toast/toast.svelte";
+	import { browser } from "$app/environment";
 
 	type Icon = { "icon-name": string; type: string; variants?: string[] };
 
@@ -39,6 +40,12 @@
 			icons = bigram_search(icons_json, value);
 		}
 	}
+
+	async function copy_icon(icon: string) {
+		if (!browser) return;
+		await navigator.clipboard.writeText(icon);
+		toasts_store.send("Icon copied!", icon);
+	}
 </script>
 
 <div class="head-container">
@@ -73,43 +80,26 @@
 
 			{#if variants}
 				{#each variants as it}
-					<button
-						onclick={() => {
-							toasts_store.send(
-								"Icon copied!",
-								given_icon_name_return_html_string({
-									icon_name: icon,
-									icon_type: icon_type,
-									variant: it
-								})
-							);
-						}}
-					>
-						{@html given_icon_name_return_html_string({
-							icon_name: icon,
-							icon_type: icon_type,
-							classname: "icon",
-							variant: it
-						})}
+					{@const _icon = given_icon_name_return_html_string({
+						icon_name: icon,
+						icon_type: icon_type,
+						classname: "icon",
+						variant: it
+					})}
+
+					<button onclick={() => copy_icon(_icon)}>
+						{@html _icon}
 					</button>
 				{/each}
 			{:else}
-				<button
-					onclick={() => {
-						toasts_store.send(
-							"Icon copied!",
-							given_icon_name_return_html_string({
-								icon_name: icon,
-								icon_type: icon_type
-							})
-						);
-					}}
-				>
-					{@html given_icon_name_return_html_string({
-						icon_name: icon,
-						icon_type: icon_type,
-						classname: "icon"
-					})}
+				{@const _icon = given_icon_name_return_html_string({
+					icon_name: icon,
+					icon_type: icon_type,
+					classname: "icon"
+				})}
+
+				<button onclick={() => copy_icon(_icon)}>
+					{@html _icon}
 				</button>
 			{/if}
 		{/each}
