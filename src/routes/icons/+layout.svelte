@@ -1,38 +1,55 @@
 <script lang="ts">
-	import { page } from "$app/stores";
+	import { page } from "$app/state";
+	import Header from "$lib/components/header.svelte";
 
 	let { children } = $props();
 </script>
 
 <svelte:head>
-	<title>CoreIcons - Beautifully crafted icon lib by @coreproject-team.</title>
+	<title>CoreIcons - Beautifully crafted icon lib.</title>
 </svelte:head>
 
-<div class="relative h-dvh w-full overflow-y-scroll">
-	<header
-		class="bg-secondary/90 sticky top-0 z-10 container flex items-center justify-between px-3 py-4 backdrop-blur md:h-16 md:px-3 md:py-0"
-	>
-		<div class="flex items-center gap-2">
-			<a aria-label="Logo" href="/">
-				<coreicons-shape-logo class="flex size-7"> </coreicons-shape-logo>
-			</a>
-		</div>
-		<nav class="flex items-center gap-4 md:gap-5">
-			{#each Object.entries({ icons: "/icons", usage: "/icons/usage" }) as item}
-				<a
-					href={item[1]}
-					class="capitalize transition-colors"
-					class:text-accent={$page.url.pathname === item[1]}>{item[0]}</a
-				>
-			{/each}
-			<a aria-label="Github" href="https://github.com/coreproject-moe/monorepo">
-				<coreicons-logo-github class="flex size-5"> </coreicons-logo-github>
-			</a>
-		</nav>
-	</header>
-	<div class="flex flex-1 justify-center">
-		<div class="w-full md:max-w-xl">
-			{@render children()}
-		</div>
+<Header />
+<div class="icons-container">
+	<div class="links">
+		<a href="/icons" class:disabled={page.url.pathname === "/icons"}>
+			<coreicons-shape-chevron variant="left"></coreicons-shape-chevron>
+			Icons
+		</a>
+		<a href="/icons/usage" class:disabled={page.url.pathname === "/icons/usage"}>
+			Usage
+			<coreicons-shape-chevron variant="right"></coreicons-shape-chevron>
+		</a>
 	</div>
+	{@render children()}
 </div>
+
+<style>
+	.icons-container {
+		margin-top: var(--header-height);
+		max-width: 35rem;
+		margin-inline: auto;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+
+		.links {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
+			a {
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				color: var(--color-info);
+
+				&.disabled {
+					opacity: 50%;
+					pointer-events: none;
+					user-select: none;
+				}
+			}
+		}
+	}
+</style>

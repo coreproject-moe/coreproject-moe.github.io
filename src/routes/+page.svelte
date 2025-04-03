@@ -35,7 +35,7 @@
 </svelte:head>
 
 <Header />
-<div class="hero-container">
+<main class="hero-container">
 	<div class="hero-content">
 		<span>Powering developers & creators</span>
 		<h1>Build the Future with Core.</h1>
@@ -72,11 +72,14 @@
 			</div>
 		</div>
 	{/if}
-</div>
+</main>
 
 <style>
-	.hero-container {
+	main {
 		flex: 1;
+		max-width: var(--header-width);
+		margin: auto;
+		position: relative;
 		display: grid;
 		place-items: center;
 

@@ -14,16 +14,15 @@
 		<span>Products <coreicons-shape-chevron variant="down"></coreicons-shape-chevron></span>
 		<span class="disabled">Blog</span>
 	</nav>
-	<Coreproject style="width: 8rem; position: absolute; left: 50%; transform: translateX(-50%);" />
+	<a href="/" style="position: absolute; left: 50%; transform: translateX(-50%);">
+		<Coreproject style="width: 8rem;" />
+	</a>
 	<nav>
-		{#if right_nav}
-			{@render right_nav()}
-		{:else}
-			<a href="https://github.com/coreproject-moe" target="_blank">
-				<coreicons-logo-github></coreicons-logo-github>
-				Github
-			</a>
-		{/if}
+		{@render right_nav?.()}
+		<a href="https://github.com/coreproject-moe" target="_blank">
+			<coreicons-logo-github></coreicons-logo-github>
+			Github
+		</a>
 	</nav>
 </header>
 
@@ -36,12 +35,13 @@
 		margin-inline: auto;
 
 		position: fixed;
+		z-index: 999;
 		top: 0;
 		inset-inline: 0;
 		padding-inline: 5rem;
 		height: var(--header-height);
 		backdrop-filter: blur(0.5rem);
-		background-color: color-mix(in srgb, var(--color-base-100) 50%, transparent);
+		background-color: color-mix(in srgb, var(--color-base-100) 90%, transparent);
 
 		nav {
 			display: flex;

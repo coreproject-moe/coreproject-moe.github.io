@@ -8,17 +8,4 @@
 	});
 </script>
 
-<main class="container">
-	{@render children()}
-</main>
-
-<style>
-	.container {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		max-width: 85rem;
-		margin: auto;
-		position: relative;
-	}
-</style>
+{@render children()}
