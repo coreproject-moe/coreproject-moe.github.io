@@ -48,8 +48,8 @@
 </svelte:head>
 
 <Header />
-<main>
-	<div class="links">
+<main class="icons-page">
+	<div class="icons-page__nav">
 		<a href="/">
 			<coreicons-shape-chevron variant="left"></coreicons-shape-chevron>
 			Home
@@ -59,20 +59,20 @@
 			<coreicons-shape-chevron variant="right"></coreicons-shape-chevron>
 		</a>
 	</div>
-	<div class="head-container">
-		<div class="main-text">
-			<span class="coreicons">CoreIcons.</span>
+	<div class="icons-page__header">
+		<div class="icons-page__header-title">
+			<span>CoreIcons.</span>
 			<span>Beautifully crafted.</span>
 		</div>
-		<p class="sub-text">
+		<p class="icons-page__header-subtext">
 			Fully customizable SVG icons, open-sourced under the MIT license, and created by
-			<a rel="nofollow" target="_blank" href="https://github.com/coreproject-moe">
+			<a rel="noopener noreferrer" target="_blank" href="https://github.com/coreproject-moe">
 				@coreproject-team
 			</a>.
 		</p>
 	</div>
-	<div class="search-container">
-		<coreicons-shape-search class="icon"></coreicons-shape-search>
+	<div class="icons-page__search">
+		<coreicons-shape-search class="icons-page__search-icon"></coreicons-shape-search>
 		<input
 			placeholder="Search icons..."
 			oninput={(event) => {
@@ -81,7 +81,7 @@
 			}}
 		/>
 	</div>
-	<div class="icons-grid-container">
+	<div class="icons-page__grid">
 		{#if icons}
 			{#each icons.toSorted((a, b) => a["icon-name"].localeCompare(b["icon-name"])) as item}
 				{@const icon = item["icon-name"]}
@@ -115,19 +115,22 @@
 			{/each}
 		{/if}
 	</div>
-	<footer>
+	<footer class="icons-page__footer">
 		<span>
 			Made with ❤️ by
-			<a href="https://github.com/coreproject-moe" target="_blank" rel="noopener"
-				>CoreProject Team</a
+			<a
+				href="https://github.com/coreproject-moe"
+				class="icons-page__footer-link"
+				target="_blank"
+				rel="noopener">CoreProject Team</a
 			>.
 		</span>
 		<span>Under the MIT license.</span>
 	</footer>
 </main>
 
-<style>
-	main {
+<style lang="scss">
+	.icons-page {
 		margin-top: var(--header-height);
 		max-width: 35rem;
 		margin-inline: auto;
@@ -136,7 +139,7 @@
 		gap: 1rem;
 		padding: 1rem;
 
-		.links {
+		&__nav {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
@@ -149,14 +152,14 @@
 			}
 		}
 
-		.head-container {
+		&__header {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
 			text-align: center;
 			gap: 0.5rem;
 
-			.main-text {
+			&-title {
 				display: flex;
 				flex-direction: column;
 				gap: 0.5rem;
@@ -165,12 +168,12 @@
 				line-height: 1;
 				color: var(--color-info);
 
-				.coreicons {
+				:first-child {
 					color: var(--color-accent);
 				}
 			}
 
-			.sub-text {
+			&-subtext {
 				color: color-mix(in srgb, var(--color-info) 75%, transparent);
 
 				a {
@@ -180,7 +183,7 @@
 			}
 		}
 
-		.search-container {
+		&__search {
 			display: flex;
 			align-items: center;
 			position: relative;
@@ -193,12 +196,12 @@
 			&:focus-within {
 				border-color: var(--color-info);
 
-				.icon {
+				&-icon {
 					opacity: 100%;
 				}
 			}
 
-			.icon {
+			&-icon {
 				position: absolute;
 				left: 1rem;
 				pointer-events: none;
@@ -215,7 +218,7 @@
 			}
 		}
 
-		.icons-grid-container {
+		&__grid {
 			display: grid;
 			grid-template-columns: repeat(6, 1fr);
 			gap: 0.5rem;
@@ -244,7 +247,7 @@
 			}
 		}
 
-		footer {
+		&__footer {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
