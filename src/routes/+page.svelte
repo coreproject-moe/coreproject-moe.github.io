@@ -88,7 +88,7 @@
 					<span class="hero__info-box__heading">contributers</span>
 					<div class="hero__info-box__body">
 						<span class="hero__info-box__count">{contributers_count}</span>
-						<span class="hero__info-box__badge">peeps</span>
+						<span class="hero__info-box__badge hero__info-box__badge--contributers">peeps</span>
 					</div>
 				</div>
 			{/if}
@@ -124,9 +124,9 @@
 			{#if stargazers_count}
 				<div in:fly={{ y: 5 }} class="hero__info-box hero__info-box--stargazers">
 					<span class="hero__info-box__heading">stargazers</span>
-					<div>
+					<div class="hero__info-box__body">
 						<span class="hero__info-box__count">{stargazers_count}</span>
-						<span class="hero__info-box__badge">stars</span>
+						<span class="hero__info-box__badge hero__info-box__badge--stargazers">stars</span>
 					</div>
 				</div>
 			{/if}
@@ -274,6 +274,16 @@
 				border-radius: 1rem;
 				text-transform: uppercase;
 				font-size: 0.75rem;
+
+				&--contributers {
+					background-color: color-mix(in srgb, var(--color-error) 25%, transparent);
+					color: var(--color-warning);
+				}
+
+				&--stargazers {
+					background-color: color-mix(in srgb, var(--color-primary) 25%, transparent);
+					color: var(--color-accent);
+				}
 			}
 
 			&--contributors {
