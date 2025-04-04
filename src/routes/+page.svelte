@@ -85,10 +85,10 @@
 			</svg>
 			{#if contributers_count}
 				<div in:fly={{ y: 5 }} class="hero__info-box hero__info-box--contributors">
-					<span class="hero__info-box__heading">contributers</span>
-					<div class="hero__info-box__body">
-						<span class="hero__info-box__count">{contributers_count}</span>
-						<span class="hero__info-box__badge hero__info-box__badge--contributers">peeps</span>
+					<span class="hero__info-box-heading">contributers</span>
+					<div class="hero__info-box-body">
+						<span class="hero__info-box-count">{contributers_count}</span>
+						<span class="hero__info-box-badge hero__info-box-badge--contributers">peeps</span>
 					</div>
 				</div>
 			{/if}
@@ -123,10 +123,10 @@
 			</svg>
 			{#if stargazers_count}
 				<div in:fly={{ y: 5 }} class="hero__info-box hero__info-box--stargazers">
-					<span class="hero__info-box__heading">stargazers</span>
-					<div class="hero__info-box__body">
-						<span class="hero__info-box__count">{stargazers_count}</span>
-						<span class="hero__info-box__badge hero__info-box__badge--stargazers">stars</span>
+					<span class="hero__info-box-heading">stargazers</span>
+					<div class="hero__info-box-body">
+						<span class="hero__info-box-count">{stargazers_count}</span>
+						<span class="hero__info-box-badge hero__info-box-badge--stargazers">stars</span>
 					</div>
 				</div>
 			{/if}
@@ -249,7 +249,7 @@
 			border: 1px solid var(--color-neutral);
 			backdrop-filter: blur(1rem);
 
-			&__heading {
+			&-heading {
 				text-transform: uppercase;
 				font-weight: 600;
 				font-size: 0.75rem;
@@ -257,18 +257,18 @@
 				opacity: 75%;
 			}
 
-			&__body {
+			&-body {
 				display: flex;
 				align-items: center;
 				gap: 0.5rem;
 			}
 
-			&__count {
+			&-count {
 				font-weight: bold;
 				font-size: 1.75rem;
 			}
 
-			&__badge {
+			&-badge {
 				line-height: 0;
 				padding: 0.65rem 0.5rem;
 				border-radius: 1rem;
