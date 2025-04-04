@@ -38,8 +38,10 @@
 
 	async function copy_icon(icon: string) {
 		if (!browser) return;
-		await navigator.clipboard.writeText(icon);
-		toasts_store.send("Icon copied!", icon);
+		// remove class attribute using string replacement
+		const icon_without_class = icon.replace(/\sclass="[^"]*"/i, "");
+		await navigator.clipboard.writeText(icon_without_class);
+		toasts_store.send("Icon copied!", icon_without_class);
 	}
 </script>
 
@@ -74,6 +76,7 @@
 	<div class="icons-page__search">
 		<coreicons-shape-search class="icons-page__search-icon"></coreicons-shape-search>
 		<input
+			class="icons-page__search-input"
 			placeholder="Search icons..."
 			oninput={(event) => {
 				event.preventDefault();
@@ -93,11 +96,11 @@
 						{@const _icon = given_icon_name_return_html_string({
 							icon_name: icon,
 							icon_type: icon_type,
-							classname: "icon",
+							classname: "icons-page__grid-icon",
 							variant: it
 						})}
 
-						<button onclick={() => copy_icon(_icon)}>
+						<button class="icons-page__grid-button" onclick={() => copy_icon(_icon)}>
 							{@html _icon}
 						</button>
 					{/each}
@@ -105,10 +108,10 @@
 					{@const _icon = given_icon_name_return_html_string({
 						icon_name: icon,
 						icon_type: icon_type,
-						classname: "icon"
+						classname: "icons-page__grid-icon"
 					})}
 
-					<button onclick={() => copy_icon(_icon)}>
+					<button class="icons-page__grid-button" onclick={() => copy_icon(_icon)}>
 						{@html _icon}
 					</button>
 				{/if}
@@ -210,7 +213,7 @@
 				transition: 0.3s ease-out;
 			}
 
-			input {
+			&-input {
 				padding-left: 2.5rem;
 				background-color: transparent;
 				outline: none;
@@ -227,7 +230,7 @@
 				grid-template-columns: repeat(8, 1fr);
 			}
 
-			button {
+			&-button {
 				aspect-ratio: 1/1;
 				border-radius: 0.75rem;
 				display: grid;
@@ -239,7 +242,7 @@
 					transition: background-color 0.1s ease-out;
 				}
 
-				:global(.icon) {
+				:global(.icons-page__grid-icon) {
 					color: var(--color-info);
 					width: 1.25rem;
 					height: 1.25rem;
