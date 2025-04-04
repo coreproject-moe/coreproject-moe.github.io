@@ -9,15 +9,15 @@
 	const { right_nav }: Props = $props();
 </script>
 
-<header>
-	<nav>
+<header class="header">
+	<nav class="header__nav">
 		<span>Products <coreicons-shape-chevron variant="down"></coreicons-shape-chevron></span>
 		<span class="disabled">Blog</span>
 	</nav>
-	<a href="/" class="coreproject-icon">
-		<Coreproject style="width: 8rem;" />
+	<a href="/" class="header__icon">
+		<Coreproject />
 	</a>
-	<nav>
+	<nav class="header__nav">
 		{@render right_nav?.()}
 		<a href="https://github.com/coreproject-moe" target="_blank">
 			<coreicons-logo-github></coreicons-logo-github>
@@ -26,8 +26,8 @@
 	</nav>
 </header>
 
-<style>
-	header {
+<style lang="scss">
+	.header {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -46,25 +46,26 @@
 			padding-inline: 5rem;
 		}
 
-		.coreproject-icon {
+		&__icon {
 			display: none;
 			position: absolute;
 			left: 50%;
 			transform: translateX(-50%);
+			width: 8rem;
 
 			@media (width >= 40rem) {
 				display: block;
 			}
 		}
 
-		nav {
+		&__nav {
 			display: flex;
 			align-items: center;
 			gap: 2rem;
 			color: var(--color-info);
 			font-weight: 600;
 
-			& * {
+			& > * {
 				display: flex;
 				align-items: center;
 				gap: 0.5rem;

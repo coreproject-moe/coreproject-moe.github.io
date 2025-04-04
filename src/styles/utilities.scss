@@ -17,21 +17,12 @@
     background-color: color-mix(in srgb, var(--color-neutral) 25%, transparent);
   }
 
-  &.btn-primary {
+  &--primary {
     background-color: var(--color-primary);
     border: none;
 
     &:hover {
       background-color: color-mix(in srgb, var(--color-primary) 75%, transparent);
-    }
-  }
-
-  &.btn-soft {
-    background-color: color-mix(in srgb, var(--color-neutral) 25%, transparent);
-    border: none;
-
-    &:hover {
-      background-color: color-mix(in srgb, var(--color-neutral) 75%, transparent);
     }
   }
 }

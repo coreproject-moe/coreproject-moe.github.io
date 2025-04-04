@@ -38,8 +38,10 @@
 
 	async function copy_icon(icon: string) {
 		if (!browser) return;
-		await navigator.clipboard.writeText(icon);
-		toasts_store.send("Icon copied!", icon);
+		// remove class attribute using string replacement
+		const icon_without_class = icon.replace(/\sclass="[^"]*"/i, "");
+		await navigator.clipboard.writeText(icon_without_class);
+		toasts_store.send("Icon copied!", icon_without_class);
 	}
 </script>
 
@@ -48,8 +50,8 @@
 </svelte:head>
 
 <Header />
-<main>
-	<div class="links">
+<main class="icons-page">
+	<div class="icons-page__nav">
 		<a href="/">
 			<coreicons-shape-chevron variant="left"></coreicons-shape-chevron>
 			Home
@@ -59,21 +61,22 @@
 			<coreicons-shape-chevron variant="right"></coreicons-shape-chevron>
 		</a>
 	</div>
-	<div class="head-container">
-		<div class="main-text">
-			<span class="coreicons">CoreIcons.</span>
+	<div class="icons-page__header">
+		<div class="icons-page__header-title">
+			<span>CoreIcons.</span>
 			<span>Beautifully crafted.</span>
 		</div>
-		<p class="sub-text">
+		<p class="icons-page__header-subtext">
 			Fully customizable SVG icons, open-sourced under the MIT license, and created by
-			<a rel="nofollow" target="_blank" href="https://github.com/coreproject-moe">
+			<a rel="noopener noreferrer" target="_blank" href="https://github.com/coreproject-moe">
 				@coreproject-team
 			</a>.
 		</p>
 	</div>
-	<div class="search-container">
-		<coreicons-shape-search class="icon"></coreicons-shape-search>
+	<div class="icons-page__search">
+		<coreicons-shape-search class="icons-page__search-icon"></coreicons-shape-search>
 		<input
+			class="icons-page__search-input"
 			placeholder="Search icons..."
 			oninput={(event) => {
 				event.preventDefault();
@@ -81,7 +84,7 @@
 			}}
 		/>
 	</div>
-	<div class="icons-grid-container">
+	<div class="icons-page__grid">
 		{#if icons}
 			{#each icons.toSorted((a, b) => a["icon-name"].localeCompare(b["icon-name"])) as item}
 				{@const icon = item["icon-name"]}
@@ -93,11 +96,11 @@
 						{@const _icon = given_icon_name_return_html_string({
 							icon_name: icon,
 							icon_type: icon_type,
-							classname: "icon",
+							classname: "icons-page__grid-icon",
 							variant: it
 						})}
 
-						<button onclick={() => copy_icon(_icon)}>
+						<button class="icons-page__grid-button" onclick={() => copy_icon(_icon)}>
 							{@html _icon}
 						</button>
 					{/each}
@@ -105,29 +108,32 @@
 					{@const _icon = given_icon_name_return_html_string({
 						icon_name: icon,
 						icon_type: icon_type,
-						classname: "icon"
+						classname: "icons-page__grid-icon"
 					})}
 
-					<button onclick={() => copy_icon(_icon)}>
+					<button class="icons-page__grid-button" onclick={() => copy_icon(_icon)}>
 						{@html _icon}
 					</button>
 				{/if}
 			{/each}
 		{/if}
 	</div>
-	<footer>
+	<footer class="icons-page__footer">
 		<span>
 			Made with ❤️ by
-			<a href="https://github.com/coreproject-moe" target="_blank" rel="noopener"
-				>CoreProject Team</a
+			<a
+				href="https://github.com/coreproject-moe"
+				class="icons-page__footer-link"
+				target="_blank"
+				rel="noopener">CoreProject Team</a
 			>.
 		</span>
 		<span>Under the MIT license.</span>
 	</footer>
 </main>
 
-<style>
-	main {
+<style lang="scss">
+	.icons-page {
 		margin-top: var(--header-height);
 		max-width: 35rem;
 		margin-inline: auto;
@@ -136,7 +142,7 @@
 		gap: 1rem;
 		padding: 1rem;
 
-		.links {
+		&__nav {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
@@ -149,14 +155,14 @@
 			}
 		}
 
-		.head-container {
+		&__header {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
 			text-align: center;
 			gap: 0.5rem;
 
-			.main-text {
+			&-title {
 				display: flex;
 				flex-direction: column;
 				gap: 0.5rem;
@@ -165,12 +171,12 @@
 				line-height: 1;
 				color: var(--color-info);
 
-				.coreicons {
+				:first-child {
 					color: var(--color-accent);
 				}
 			}
 
-			.sub-text {
+			&-subtext {
 				color: color-mix(in srgb, var(--color-info) 75%, transparent);
 
 				a {
@@ -180,7 +186,7 @@
 			}
 		}
 
-		.search-container {
+		&__search {
 			display: flex;
 			align-items: center;
 			position: relative;
@@ -193,12 +199,12 @@
 			&:focus-within {
 				border-color: var(--color-info);
 
-				.icon {
+				&-icon {
 					opacity: 100%;
 				}
 			}
 
-			.icon {
+			&-icon {
 				position: absolute;
 				left: 1rem;
 				pointer-events: none;
@@ -207,7 +213,7 @@
 				transition: 0.3s ease-out;
 			}
 
-			input {
+			&-input {
 				padding-left: 2.5rem;
 				background-color: transparent;
 				outline: none;
@@ -215,7 +221,7 @@
 			}
 		}
 
-		.icons-grid-container {
+		&__grid {
 			display: grid;
 			grid-template-columns: repeat(6, 1fr);
 			gap: 0.5rem;
@@ -224,7 +230,7 @@
 				grid-template-columns: repeat(8, 1fr);
 			}
 
-			button {
+			&-button {
 				aspect-ratio: 1/1;
 				border-radius: 0.75rem;
 				display: grid;
@@ -236,7 +242,7 @@
 					transition: background-color 0.1s ease-out;
 				}
 
-				:global(.icon) {
+				:global(.icons-page__grid-icon) {
 					color: var(--color-info);
 					width: 1.25rem;
 					height: 1.25rem;
@@ -244,7 +250,7 @@
 			}
 		}
 
-		footer {
+		&__footer {
 			display: flex;
 			flex-direction: column;
 			align-items: center;

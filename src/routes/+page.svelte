@@ -34,17 +34,20 @@
 </svelte:head>
 
 <Header />
-<main>
-	<div class="hero-container">
-		<div class="hero-content">
-			<span>Powering developers & creators</span>
-			<h1>Build the Future with Core.</h1>
-			<p>Imagine a new platform where creativity thrives and limitless possibilities emerge.</p>
-			<div class="cta">
+<main class="hero">
+	<div class="hero__container">
+		<div class="hero__content">
+			<span class="hero__subtitle">Powering developers & creators</span>
+			<h1 class="hero__title">Build the Future with Core.</h1>
+			<p class="hero__description">
+				Imagine a new platform where creativity thrives and limitless possibilities emerge.
+			</p>
+			<div class="hero__cta">
 				<a
 					href="https://github.com/coreproject-moe/monorepo"
 					target="_blank"
-					class="btn btn-primary"
+					rel="noopener noreferrer"
+					class="btn btn--primary"
 				>
 					<coreicons-logo-github></coreicons-logo-github>
 					Monorepo
@@ -56,14 +59,14 @@
 			</div>
 		</div>
 		<!-- vectors -->
-		<!-- triangle -->
-		<div class="dl-triangle-vector">
+		<div class="hero__vector hero__vector--triangle">
 			<svg
 				width="203"
 				height="203"
 				viewBox="0 0 203 203"
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
+				aria-hidden="true"
 			>
 				<path d="M1 202V2L201 202H1Z" stroke="url(#paint0_linear_1_3)" />
 				<defs>
@@ -81,23 +84,24 @@
 				</defs>
 			</svg>
 			{#if contributers_count}
-				<div in:fly={{ y: 5 }} class="info-box contributers">
-					<span class="head">contributers</span>
-					<div>
-						<span class="count">{contributers_count}</span>
-						<span class="badge">peeps</span>
+				<div in:fly={{ y: 5 }} class="hero__info-box hero__info-box--contributors">
+					<span class="hero__info-box-heading">contributers</span>
+					<div class="hero__info-box-body">
+						<span class="hero__info-box-count">{contributers_count}</span>
+						<span class="hero__info-box-badge hero__info-box-badge--contributers">peeps</span>
 					</div>
 				</div>
 			{/if}
 		</div>
 		<!-- semicircle -->
-		<div class="dl-semicircle-vector">
+		<div class="hero__vector hero__vector--semicircle">
 			<svg
 				width="261"
 				height="155"
 				viewBox="0 0 261 155"
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
+				aria-hidden="true"
 			>
 				<path
 					d="M58.5 154.5H0.500015C0.500015 -50.5 260.5 -49.5 260.5 154.5H203.5C203.5 25.1663 58.5 24.1893 58.5 154.5Z"
@@ -118,11 +122,11 @@
 				</defs>
 			</svg>
 			{#if stargazers_count}
-				<div in:fly={{ y: 5 }} class="info-box stargazers">
-					<span class="head">stargazers</span>
-					<div>
-						<span class="count">{stargazers_count}</span>
-						<span class="badge">stars</span>
+				<div in:fly={{ y: 5 }} class="hero__info-box hero__info-box--stargazers">
+					<span class="hero__info-box-heading">stargazers</span>
+					<div class="hero__info-box-body">
+						<span class="hero__info-box-count">{stargazers_count}</span>
+						<span class="hero__info-box-badge hero__info-box-badge--stargazers">stars</span>
 					</div>
 				</div>
 			{/if}
@@ -130,86 +134,122 @@
 	</div>
 </main>
 
-<style>
-	main {
+<style lang="scss">
+	.hero {
 		flex: 1;
 		display: flex;
 		overflow: hidden;
 		padding: 1rem;
-	}
 
-	.hero-container {
-		flex: 1;
-		margin: auto;
-		position: relative;
-		display: grid;
-		place-items: center;
+		&__container {
+			flex: 1;
+			margin: auto;
+			position: relative;
+			display: grid;
+			place-items: center;
 
-		@media (width >= 80rem) {
-			max-width: var(--header-width);
+			@media (width >= 80rem) {
+				max-width: var(--header-width);
+			}
 		}
 
-		.hero-content {
+		&__content {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
 			gap: 0.5rem;
 			max-width: 25rem;
 			text-align: center;
+		}
 
-			span {
-				text-transform: uppercase;
-				font-weight: 600;
-				font-size: 0.75rem;
-				color: var(--color-info);
+		&__subtitle {
+			text-transform: uppercase;
+			font-weight: 600;
+			font-size: 0.75rem;
+			color: var(--color-info);
+		}
+
+		&__title {
+			font-size: 3rem;
+			font-weight: bold;
+			line-height: normal;
+		}
+
+		&__description {
+			color: var(--color-info);
+			opacity: 75%;
+		}
+
+		&__cta {
+			display: flex;
+			align-items: center;
+			gap: 0.75rem;
+		}
+
+		/* vectors */
+		&__vector {
+			z-index: -1;
+			position: absolute;
+
+			svg {
+				width: 100%;
+				height: auto;
 			}
 
-			h1 {
-				font-size: 3rem;
-				font-weight: bold;
-				line-height: normal;
+			&--triangle {
+				right: -12rem;
+				top: -5rem;
+				width: 15rem;
+
+				@media (width >= 40rem) {
+					right: -10rem;
+				}
+
+				@media (width >= 48rem) {
+					right: -5rem;
+				}
+
+				@media (width >= 64rem) {
+					right: 0rem;
+				}
+
+				@media (width >= 80rem) {
+					right: 10rem;
+				}
 			}
 
-			p {
-				color: var(--color-info);
-				opacity: 75%;
-			}
+			&--semicircle {
+				left: -24rem;
+				bottom: 0;
+				width: 25rem;
 
-			.cta {
-				display: flex;
-				align-items: center;
-				gap: 0.75rem;
+				@media (width >= 40rem) {
+					left: -20rem;
+				}
+
+				@media (width >= 48rem) {
+					left: -15rem;
+				}
+
+				@media (width >= 64rem) {
+					left: -8rem;
+				}
+
+				@media (width >= 80rem) {
+					left: 0;
+				}
 			}
 		}
 
-		.info-box {
+		/* info boxes */
+		&__info-box {
 			position: absolute;
 			padding: 1rem;
 			background-color: color-mix(in srgb, var(--color-neutral) 25%, transparent);
 			border: 1px solid var(--color-neutral);
 			backdrop-filter: blur(1rem);
 
-			&.contributers {
-				top: 1rem;
-				right: 5rem;
-
-				div span.badge {
-					background-color: color-mix(in srgb, var(--color-error) 25%, transparent);
-					color: var(--color-warning);
-				}
-			}
-
-			&.stargazers {
-				top: -2rem;
-				left: 10rem;
-
-				div span.badge {
-					background-color: color-mix(in srgb, var(--color-primary) 25%, transparent);
-					color: var(--color-accent);
-				}
-			}
-
-			span.head {
+			&-heading {
 				text-transform: uppercase;
 				font-weight: 600;
 				font-size: 0.75rem;
@@ -217,80 +257,44 @@
 				opacity: 75%;
 			}
 
-			div {
+			&-body {
 				display: flex;
 				align-items: center;
 				gap: 0.5rem;
+			}
 
-				span.count {
-					font-weight: bold;
-					font-size: 1.75rem;
+			&-count {
+				font-weight: bold;
+				font-size: 1.75rem;
+			}
+
+			&-badge {
+				line-height: 0;
+				padding: 0.65rem 0.5rem;
+				border-radius: 1rem;
+				text-transform: uppercase;
+				font-size: 0.75rem;
+
+				&--contributers {
+					background-color: color-mix(in srgb, var(--color-error) 25%, transparent);
+					color: var(--color-warning);
 				}
 
-				span.badge {
-					line-height: 0;
-					padding: 0.65rem 0.5rem;
-					border-radius: 1rem;
-					text-transform: uppercase;
-					font-size: 0.75rem;
+				&--stargazers {
+					background-color: color-mix(in srgb, var(--color-primary) 25%, transparent);
+					color: var(--color-accent);
 				}
 			}
-		}
-	}
 
-	.dl-triangle-vector {
-		z-index: -1;
-		position: absolute;
-		right: -12rem;
-		top: -5rem;
+			&--contributors {
+				top: 1rem;
+				right: 5rem;
+			}
 
-		svg {
-			width: 15rem;
-			height: auto;
-		}
-
-		@media (width >= 40rem) {
-			right: -10rem;
-		}
-
-		@media (width >= 48rem) {
-			right: -5rem;
-		}
-
-		@media (width >= 64rem) {
-			right: 0rem;
-		}
-
-		@media (width >= 80rem) {
-			right: 10rem;
-		}
-	}
-
-	.dl-semicircle-vector {
-		z-index: -1;
-		position: absolute;
-		left: -24rem;
-		bottom: 0;
-
-		svg {
-			width: 25rem;
-			height: auto;
-		}
-
-		@media (width >= 40rem) {
-			left: -20rem;
-		}
-
-		@media (width >= 48rem) {
-			left: -15rem;
-		}
-
-		@media (width >= 64rem) {
-			left: -8rem;
-		}
-
-		@media (width >= 80rem) {
-			left: 0;
+			&--stargazers {
+				top: -2rem;
+				left: 10rem;
+			}
 		}
 	}
 </style>
