@@ -6,21 +6,25 @@
 
 <div class="toaster">
 	{#each toasts_store.value as toast (toast.id)}
-		<div animate:flip={{ duration: 300 }} transition:fly={{ y: 5 }} class="toast">
+		<div animate:flip={{ duration: 300 }} transition:fly={{ y: 5 }} class="toaster__toast">
 			{#if toast.icon}
 				{@html toast.icon}
 			{:else}
 				<coreicons-shape-info></coreicons-shape-info>
 			{/if}
-			<span>{toast.message}</span>
-			<button aria-label="Close toast" onclick={() => toasts_store.dismiss(toast.id)}>
+			<span class="toaster__toast-message">{toast.message}</span>
+			<button
+				aria-label="Close toast"
+				class="toaster__toast-close-btn"
+				onclick={() => toasts_store.dismiss(toast.id)}
+			>
 				<coreicons-shape-x variant="no-border"></coreicons-shape-x>
 			</button>
 		</div>
 	{/each}
 </div>
 
-<style>
+<style lang="scss">
 	.toaster {
 		position: fixed;
 		bottom: 1rem;
@@ -33,7 +37,7 @@
 		gap: 0.5rem;
 		align-items: center;
 
-		.toast {
+		&__toast {
 			background-color: var(--color-neutral);
 			height: 3rem;
 			padding-inline: 1rem;
@@ -44,11 +48,11 @@
 			gap: 0.5rem;
 			color: var(--color-info);
 
-			span {
+			&-message {
 				font-weight: 600;
 			}
 
-			button {
+			&-close-btn {
 				font-size: 0.75rem;
 			}
 		}
