@@ -1,6 +1,6 @@
-@import "./fonts.scss";
-@import "./utilities.scss";
-@import "./normalize.scss";
+@use "fonts";
+@use "utilities";
+@use "normalize";
 
 :root {
   /* fonts */
