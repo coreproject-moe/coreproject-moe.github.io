@@ -56,7 +56,10 @@
 			<coreicons-shape-chevron variant="left"></coreicons-shape-chevron>
 			Home
 		</a>
-		<a href="https://github.com/coreproject-moe/monorepo/tree/main/packages/icons" target="_blank">
+		<a
+			href="https://github.com/coreproject-moe/monorepo/blob/main/packages/icons/README.md"
+			target="_blank"
+		>
 			Usage
 			<coreicons-shape-chevron variant="right"></coreicons-shape-chevron>
 		</a>
