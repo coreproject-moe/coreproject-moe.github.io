@@ -25,7 +25,7 @@
 		"sass": "^1.89.2",
 		"svelte": "^5.34.3",
 		"svelte-check": "^4.2.1",
-		"terser": "^5.42.0",
+		"terser": "^5.43.0",
 		"typescript": "^5.8.3",
 		"vite": "^6.3.5"
 	},
