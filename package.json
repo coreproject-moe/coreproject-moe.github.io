@@ -15,7 +15,7 @@
 		"@sveltejs/adapter-static": "^3.0.9",
 		"@sveltejs/kit": "^2.39.1",
 		"@sveltejs/vite-plugin-svelte": "^6.2.0",
-		"@types/node": "^24.4.0",
+		"@types/node": "^24.5.0",
 		"@types/prismjs": "^1.26.5",
 		"highlight.js": "^11.11.1",
 		"postcss": "^8.5.6",
