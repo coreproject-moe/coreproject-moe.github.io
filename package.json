@@ -14,7 +14,7 @@
 		"@coreproject-moe/icons": "^0.0.69",
 		"@sveltejs/adapter-static": "^3.0.10",
 		"@sveltejs/kit": "^2.53.0",
-		"@sveltejs/vite-plugin-svelte": "^6.2.4",
+		"@sveltejs/vite-plugin-svelte": "^7.0.0",
 		"@types/node": "^25.3.0",
 		"@types/prismjs": "^1.26.6",
 		"highlight.js": "^11.11.1",
