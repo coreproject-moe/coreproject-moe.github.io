@@ -40,7 +40,7 @@
 				Imagine a new platform where creativity thrives and limitless possibilities emerge.
 			</p>
 			<div class="cta">
-				
+				<a
 					href="https://github.com/coreproject-moe/monorepo"
 					target="_blank"
 					rel="noopener noreferrer"
@@ -256,10 +256,18 @@
 				top: -5rem;
 				width: 15rem;
 
-				@media (width >= 40rem) { right: -10rem; }
-				@media (width >= 48rem) { right: -5rem; }
-				@media (width >= 64rem) { right: 0rem; }
-				@media (width >= 80rem) { right: 10rem; }
+				@media (width >= 40rem) {
+					right: -10rem;
+				}
+				@media (width >= 48rem) {
+					right: -5rem;
+				}
+				@media (width >= 64rem) {
+					right: 0rem;
+				}
+				@media (width >= 80rem) {
+					right: 10rem;
+				}
 			}
 
 			&.semicircle {
@@ -267,10 +275,18 @@
 				bottom: 0;
 				width: 25rem;
 
-				@media (width >= 40rem) { left: -20rem; }
-				@media (width >= 48rem) { left: -15rem; }
-				@media (width >= 64rem) { left: -8rem; }
-				@media (width >= 80rem) { left: 0; }
+				@media (width >= 40rem) {
+					left: -20rem;
+				}
+				@media (width >= 48rem) {
+					left: -15rem;
+				}
+				@media (width >= 64rem) {
+					left: -8rem;
+				}
+				@media (width >= 80rem) {
+					left: 0;
+				}
 			}
 
 			&.grids {
@@ -278,10 +294,18 @@
 				left: 2rem;
 				width: 10rem;
 
-				@media (width >= 40rem) { left: 10rem; }
-				@media (width >= 48rem) { left: 15rem; }
-				@media (width >= 64rem) { left: 25rem; }
-				@media (width >= 80rem) { left: 25rem; }
+				@media (width >= 40rem) {
+					left: 10rem;
+				}
+				@media (width >= 48rem) {
+					left: 15rem;
+				}
+				@media (width >= 64rem) {
+					left: 25rem;
+				}
+				@media (width >= 80rem) {
+					left: 25rem;
+				}
 			}
 		}
 
