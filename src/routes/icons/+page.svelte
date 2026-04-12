@@ -4,45 +4,37 @@
 	import { toasts_store } from "$lib/components/ui/toast/toast.svelte";
 	import { browser } from "$app/environment";
 	import Header from "$lib/components/header.svelte";
+	import icons_data from "$lib/icons.json";
 
 	type Icon = { "icon-name": string; type: string; variants?: string[] };
 
-	let icons_json = $state<Icon[] | null>(null);
-	let icons = $state<Icon[] | null>(null);
+	const icons_json: Icon[] = icons_data as Icon[];
+	let icons = $state<Icon[]>(structuredClone(icons_json));
+	let query = $state("");
 
-	$effect.pre(() => {
-		import("$lib/icons.json", {
-			assert: { type: "json" }
-		}).then((res) => {
-			const data = res.default;
-
-			icons_json = structuredClone(data);
-			icons = structuredClone(data);
-		});
+	$effect(() => {
+		if (query.length === 0) icons = icons_json;
+		else if (query.length === 1) icons = linear_search(icons_json, query);
+		else icons = bigram_search(icons_json, query);
 	});
 
-	function handle_input(event: Event) {
-		if (icons_json == null) return;
-
-		const target = event.target as HTMLInputElement;
-		const value = target.value;
-
-		if (value.length === 0) {
-			icons = icons_json;
-		} else if (value.length === 1) {
-			icons = linear_search(icons_json, value);
-		} else if (value.length > 1) {
-			icons = bigram_search(icons_json, value);
-		}
+	function resolve_icon(icon: string, type: string, variant?: string) {
+		return given_icon_name_return_html_string({
+			icon_name: icon,
+			icon_type: type,
+			classname: "icon",
+			variant
+		});
 	}
 
-	async function copy_icon(icon: string) {
+	async function copy_icon(raw: string) {
 		if (!browser) return;
-		// remove class attribute using string replacement
-		const icon_without_class = icon.replace(/\sclass="[^"]*"/i, "");
-		await navigator.clipboard.writeText(icon_without_class);
-		toasts_store.send("Icon copied!", icon_without_class);
+		const svg = raw.replace(/\sclass="[^"]*"/i, "");
+		await navigator.clipboard.writeText(svg);
+		toasts_store.send("Icon copied!", svg);
 	}
+
+	const sorted = $derived(icons.toSorted((a, b) => a["icon-name"].localeCompare(b["icon-name"])));
 </script>
 
 <svelte:head>
@@ -50,8 +42,9 @@
 </svelte:head>
 
 <Header />
-<main class="icons-page">
-	<div class="icons-page__nav">
+
+<main>
+	<nav>
 		<a href="/">
 			<coreicons-shape-chevron variant="left"></coreicons-shape-chevron>
 			Home
@@ -63,80 +56,53 @@
 			Usage
 			<coreicons-shape-chevron variant="right"></coreicons-shape-chevron>
 		</a>
-	</div>
-	<div class="icons-page__header">
-		<div class="icons-page__header-title">
+	</nav>
+
+	<header>
+		<hgroup>
 			<span>CoreIcons.</span>
 			<span>Beautifully crafted.</span>
-		</div>
-		<p class="icons-page__header-subtext">
+		</hgroup>
+		<p>
 			Fully customizable SVG icons, open-sourced under the MIT license, and created by
 			<a rel="noopener noreferrer" target="_blank" href="https://github.com/coreproject-moe">
 				@coreproject-team
 			</a>.
 		</p>
-	</div>
-	<div class="icons-page__search">
-		<coreicons-shape-search class="icons-page__search-icon"></coreicons-shape-search>
-		<input
-			class="icons-page__search-input"
-			placeholder="Search icons..."
-			oninput={(event) => {
-				event.preventDefault();
-				handle_input(event);
-			}}
-		/>
-	</div>
-	<div class="icons-page__grid">
-		{#if icons}
-			{#each icons.toSorted((a, b) => a["icon-name"].localeCompare(b["icon-name"])) as item}
-				{@const icon = item["icon-name"]}
-				{@const variants = item.variants}
-				{@const icon_type = item.type}
+	</header>
 
-				{#if variants}
-					{#each variants as it}
-						{@const _icon = given_icon_name_return_html_string({
-							icon_name: icon,
-							icon_type: icon_type,
-							classname: "icons-page__grid-icon",
-							variant: it
-						})}
+	<label class="search">
+		<coreicons-shape-search></coreicons-shape-search>
+		<input type="search" placeholder="Search icons..." bind:value={query} />
+	</label>
 
-						<button class="icons-page__grid-button" onclick={() => copy_icon(_icon)}>
-							{@html _icon}
-						</button>
-					{/each}
-				{:else}
-					{@const _icon = given_icon_name_return_html_string({
-						icon_name: icon,
-						icon_type: icon_type,
-						classname: "icons-page__grid-icon"
-					})}
-
-					<button class="icons-page__grid-button" onclick={() => copy_icon(_icon)}>
-						{@html _icon}
-					</button>
-				{/if}
-			{/each}
-		{/if}
+	<div class="grid">
+		{#each sorted as { "icon-name": name, type, variants }}
+			{#if variants}
+				{#each variants as variant}
+					{@const html = resolve_icon(name, type, variant)}
+					<button onclick={() => copy_icon(html)}>{@html html}</button>
+				{/each}
+			{:else}
+				{@const html = resolve_icon(name, type)}
+				<button onclick={() => copy_icon(html)}>{@html html}</button>
+			{/if}
+		{/each}
 	</div>
-	<footer class="icons-page__footer">
+
+	<footer>
 		<span>
 			Made with ❤️ by
-			<a
-				href="https://github.com/coreproject-moe"
-				class="icons-page__footer-link"
-				target="_blank"
-				rel="noopener">CoreProject Team</a
-			>.
+			<a href="https://github.com/coreproject-moe" target="_blank" rel="noopener">
+				CoreProject Team
+			</a>.
 		</span>
 		<span>Under the MIT license.</span>
 	</footer>
 </main>
 
 <style lang="scss">
-	.icons-page {
+	main {
 		margin-top: var(--header-height);
 		max-width: 35rem;
 		margin-inline: auto;
@@ -145,7 +111,7 @@
 		gap: 1rem;
 		padding: 1rem;
 
-		&__nav {
+		nav {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
@@ -158,14 +124,14 @@
 			}
 		}
 
-		&__header {
+		header {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
 			text-align: center;
 			gap: 0.5rem;
 
-			&-title {
+			hgroup {
 				display: flex;
 				flex-direction: column;
 				gap: 0.5rem;
@@ -174,12 +140,12 @@
 				line-height: 1;
 				color: var(--color-info);
 
-				:first-child {
+				span:first-child {
 					color: var(--color-accent);
 				}
 			}
 
-			&-subtext {
+			p {
 				color: color-mix(in srgb, var(--color-info) 75%, transparent);
 
 				a {
@@ -189,7 +155,7 @@
 			}
 		}
 
-		&__search {
+		.search {
 			display: flex;
 			align-items: center;
 			position: relative;
@@ -197,34 +163,37 @@
 			height: 3rem;
 			border: 2px solid var(--color-neutral);
 			border-radius: 0.75rem;
-			transition: 0.3s ease-out;
+			transition: border-color 0.3s ease-out;
+			cursor: text;
 
 			&:focus-within {
 				border-color: var(--color-info);
-
-				&-icon {
-					opacity: 100%;
-				}
 			}
 
-			&-icon {
+			coreicons-shape-search {
 				position: absolute;
 				left: 1rem;
 				pointer-events: none;
 				color: var(--color-info);
 				opacity: 75%;
-				transition: 0.3s ease-out;
+				transition: opacity 0.3s ease-out;
 			}
 
-			&-input {
+			&:focus-within coreicons-shape-search {
+				opacity: 100%;
+			}
+
+			input {
 				padding-left: 2.5rem;
 				background-color: transparent;
 				outline: none;
 				flex: 1;
+				height: 100%;
+				border: none;
 			}
 		}
 
-		&__grid {
+		.grid {
 			display: grid;
 			grid-template-columns: repeat(6, 1fr);
 			gap: 0.5rem;
@@ -233,8 +202,8 @@
 				grid-template-columns: repeat(8, 1fr);
 			}
 
-			&-button {
-				aspect-ratio: 1/1;
+			button {
+				aspect-ratio: 1 / 1;
 				border-radius: 0.75rem;
 				display: grid;
 				place-items: center;
@@ -245,7 +214,7 @@
 					transition: background-color 0.1s ease-out;
 				}
 
-				:global(.icons-page__grid-icon) {
+				:global(.icon) {
 					color: var(--color-info);
 					width: 1.25rem;
 					height: 1.25rem;
@@ -253,7 +222,7 @@
 			}
 		}
 
-		&__footer {
+		footer {
 			display: flex;
 			flex-direction: column;
 			align-items: center;

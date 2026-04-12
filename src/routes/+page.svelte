@@ -10,16 +10,13 @@
 		try {
 			const base_api_url = "https://api.github.com/repos/coreproject-moe/CoreProject";
 			const contributers_res = await fetch(`${base_api_url}/contributors?per_page=1&anon=true`);
-			// github returns a link header for paginated results
 			const link_header = contributers_res.headers.get("Link");
 
 			if (link_header) {
-				// extract the last page number from the link header
 				const last_page_match = link_header.match(/page=(\d+)>; rel="last"/);
 				if (last_page_match) contributers_count = parseInt(last_page_match[1], 10);
 			}
 
-			// fetch stargazers count
 			const stargazers_res = await fetch(base_api_url);
 			const stagazers_data = await stargazers_res.json();
 			stargazers_count = stagazers_data.stargazers_count;
@@ -35,14 +32,14 @@
 
 <Header />
 <main class="hero">
-	<div class="hero__container">
-		<div class="hero__content">
-			<span class="hero__subtitle">Powering developers & creators</span>
-			<h1 class="hero__title">Build the Future with Core.</h1>
-			<p class="hero__description">
+	<div class="container">
+		<div class="content">
+			<span class="subtitle">Powering developers & creators</span>
+			<h1 class="title">Build the Future with Core.</h1>
+			<p class="description">
 				Imagine a new platform where creativity thrives and limitless possibilities emerge.
 			</p>
-			<div class="hero__cta">
+			<div class="cta">
 				<a
 					href="https://github.com/coreproject-moe/monorepo"
 					target="_blank"
@@ -58,8 +55,8 @@
 				</a>
 			</div>
 		</div>
-		<!-- vectors -->
-		<div class="hero__vector hero__vector--triangle">
+
+		<div class="vector triangle">
 			<svg
 				width="203"
 				height="203"
@@ -84,17 +81,17 @@
 				</defs>
 			</svg>
 			{#if contributers_count}
-				<div in:fly={{ y: 5 }} class="hero__info-box hero__info-box--contributors">
-					<span class="hero__info-box-heading">contributers</span>
-					<div class="hero__info-box-body">
-						<span class="hero__info-box-count">{contributers_count}</span>
-						<span class="hero__info-box-badge hero__info-box-badge--contributers">peeps</span>
+				<div in:fly={{ y: 5 }} class="info-box contributors">
+					<span class="info-heading">contributers</span>
+					<div class="info-body">
+						<span class="info-count">{contributers_count}</span>
+						<span class="info-badge contributors-badge">peeps</span>
 					</div>
 				</div>
 			{/if}
 		</div>
-		<!-- semicircle -->
-		<div class="hero__vector hero__vector--semicircle">
+
+		<div class="vector semicircle">
 			<svg
 				width="261"
 				height="155"
@@ -122,18 +119,18 @@
 				</defs>
 			</svg>
 			{#if stargazers_count}
-				<div in:fly={{ y: 5 }} class="hero__info-box hero__info-box--stargazers">
-					<span class="hero__info-box-heading">stargazers</span>
-					<div class="hero__info-box-body">
-						<span class="hero__info-box-count">{stargazers_count}</span>
-						<span class="hero__info-box-badge hero__info-box-badge--stargazers">stars</span>
+				<div in:fly={{ y: 5 }} class="info-box stargazers">
+					<span class="info-heading">stargazers</span>
+					<div class="info-body">
+						<span class="info-count">{stargazers_count}</span>
+						<span class="info-badge stargazers-badge">stars</span>
 					</div>
 				</div>
 			{/if}
 		</div>
-		<!-- grids -->
+
 		<svg
-			class="hero__vector hero__vector--grids"
+			class="vector grids"
 			width="86"
 			height="62"
 			viewBox="0 0 86 62"
@@ -199,7 +196,7 @@
 		overflow: hidden;
 		padding: 1rem;
 
-		&__container {
+		.container {
 			flex: 1;
 			margin: auto;
 			position: relative;
@@ -211,7 +208,7 @@
 			}
 		}
 
-		&__content {
+		.content {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -220,32 +217,31 @@
 			text-align: center;
 		}
 
-		&__subtitle {
+		.subtitle {
 			text-transform: uppercase;
 			font-weight: 600;
 			font-size: 0.75rem;
 			color: var(--color-info);
 		}
 
-		&__title {
+		.title {
 			font-size: 3rem;
 			font-weight: bold;
 			line-height: normal;
 		}
 
-		&__description {
+		.description {
 			color: var(--color-info);
 			opacity: 75%;
 		}
 
-		&__cta {
+		.cta {
 			display: flex;
 			align-items: center;
 			gap: 0.75rem;
 		}
 
-		/* vectors */
-		&__vector {
+		.vector {
 			z-index: -1;
 			position: absolute;
 			height: auto;
@@ -255,7 +251,7 @@
 				height: auto;
 			}
 
-			&--triangle {
+			&.triangle {
 				right: -12rem;
 				top: -5rem;
 				width: 15rem;
@@ -263,21 +259,18 @@
 				@media (width >= 40rem) {
 					right: -10rem;
 				}
-
 				@media (width >= 48rem) {
 					right: -5rem;
 				}
-
 				@media (width >= 64rem) {
 					right: 0rem;
 				}
-
 				@media (width >= 80rem) {
 					right: 10rem;
 				}
 			}
 
-			&--semicircle {
+			&.semicircle {
 				left: -24rem;
 				bottom: 0;
 				width: 25rem;
@@ -285,21 +278,18 @@
 				@media (width >= 40rem) {
 					left: -20rem;
 				}
-
 				@media (width >= 48rem) {
 					left: -15rem;
 				}
-
 				@media (width >= 64rem) {
 					left: -8rem;
 				}
-
 				@media (width >= 80rem) {
 					left: 0;
 				}
 			}
 
-			&--grids {
+			&.grids {
 				top: -2rem;
 				left: 2rem;
 				width: 10rem;
@@ -307,74 +297,70 @@
 				@media (width >= 40rem) {
 					left: 10rem;
 				}
-
 				@media (width >= 48rem) {
 					left: 15rem;
 				}
-
 				@media (width >= 64rem) {
 					left: 25rem;
 				}
-
 				@media (width >= 80rem) {
 					left: 25rem;
 				}
 			}
 		}
 
-		/* info boxes */
-		&__info-box {
+		.info-box {
 			position: absolute;
 			padding: 1rem;
 			background-color: color-mix(in srgb, var(--color-neutral) 25%, transparent);
 			border: 1px solid var(--color-neutral);
 			backdrop-filter: blur(1rem);
 
-			&-heading {
-				text-transform: uppercase;
-				font-weight: 600;
-				font-size: 0.75rem;
-				color: var(--color-info);
-				opacity: 75%;
-			}
-
-			&-body {
-				display: flex;
-				align-items: center;
-				gap: 0.5rem;
-			}
-
-			&-count {
-				font-weight: bold;
-				font-size: 1.75rem;
-			}
-
-			&-badge {
-				line-height: 0;
-				padding: 0.65rem 0.5rem;
-				border-radius: 1rem;
-				text-transform: uppercase;
-				font-size: 0.75rem;
-
-				&--contributers {
-					background-color: color-mix(in srgb, var(--color-error) 25%, transparent);
-					color: var(--color-warning);
-				}
-
-				&--stargazers {
-					background-color: color-mix(in srgb, var(--color-primary) 25%, transparent);
-					color: var(--color-accent);
-				}
-			}
-
-			&--contributors {
+			&.contributors {
 				top: 1rem;
 				right: 5rem;
 			}
 
-			&--stargazers {
+			&.stargazers {
 				top: -2rem;
 				left: 10rem;
+			}
+		}
+
+		.info-heading {
+			text-transform: uppercase;
+			font-weight: 600;
+			font-size: 0.75rem;
+			color: var(--color-info);
+			opacity: 75%;
+		}
+
+		.info-body {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.info-count {
+			font-weight: bold;
+			font-size: 1.75rem;
+		}
+
+		.info-badge {
+			line-height: 0;
+			padding: 0.65rem 0.5rem;
+			border-radius: 1rem;
+			text-transform: uppercase;
+			font-size: 0.75rem;
+
+			&.contributors-badge {
+				background-color: color-mix(in srgb, var(--color-error) 25%, transparent);
+				color: var(--color-warning);
+			}
+
+			&.stargazers-badge {
+				background-color: color-mix(in srgb, var(--color-primary) 25%, transparent);
+				color: var(--color-accent);
 			}
 		}
 	}
