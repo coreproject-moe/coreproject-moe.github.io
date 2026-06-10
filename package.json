@@ -19,7 +19,7 @@
 		"@types/prismjs": "^1.26.6",
 		"highlight.js": "^11.11.1",
 		"postcss": "^8.5.15",
-		"prettier": "^3.8.3",
+		"prettier": "^3.8.4",
 		"prettier-plugin-svelte": "^4.1.0",
 		"prettier-plugin-tailwindcss": "^0.8.0",
 		"sass": "^1.100.0",
