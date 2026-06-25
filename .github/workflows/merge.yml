@@ -27,8 +27,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: ["build-frontend"]
     if: github.actor == 'dependabot[bot]' # Detect that the PR author is dependabot
+    concurrency:
+      group: merge
+      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v4
+
       - name: Enable auto-merge for Dependabot PRs
         run: gh pr merge --auto --merge "$PR_URL" # Use Github CLI to merge automatically the PR
         env:
