@@ -24,7 +24,7 @@
 		"prettier-plugin-tailwindcss": "^0.8.1",
 		"sass": "^1.102.0",
 		"svelte": "^5.56.8",
-		"svelte-check": "^4.7.5",
+		"svelte-check": "^4.7.6",
 		"terser": "^5.49.2",
 		"typescript": "^7.0.2",
 		"vite": "^8.2.1"
